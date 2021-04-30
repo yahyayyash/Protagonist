@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Product Sans Bold.ttf">
+            <string>ProductSans-Bold</string>
+        </array>
+        <array key="Product Sans Regular.ttf">
+            <string>ProductSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="JournalCell" id="gTV-IL-0wX" customClass="JournalCell" customModule="Protagonist" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="500"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="295" height="500"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Journey Awaits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ap-0b-bGe">
+                        <rect key="frame" x="25" y="401" width="245" height="30"/>
+                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp4-ws-92v">
+                        <rect key="frame" x="25" y="436" width="245" height="34"/>
+                        <string key="text">Click plus button below to create 
+a new journal.</string>
+                        <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xUD-rT-Mqe">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="295"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="xUD-rT-Mqe" secondAttribute="height" multiplier="1:1" id="yC1-83-ztk"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemYellowColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dp4-ws-92v" secondAttribute="bottom" constant="30" id="1Ub-8e-svl"/>
+                <constraint firstAttribute="trailing" secondItem="xUD-rT-Mqe" secondAttribute="trailing" id="AH5-MO-8g0"/>
+                <constraint firstAttribute="trailing" secondItem="dp4-ws-92v" secondAttribute="trailing" constant="25" id="EPC-UO-ITc"/>
+                <constraint firstItem="1ap-0b-bGe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="GLw-fO-yby"/>
+                <constraint firstItem="xUD-rT-Mqe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Q7Y-Xk-CWZ"/>
+                <constraint firstItem="dp4-ws-92v" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="Vmz-qg-x8k"/>
+                <constraint firstItem="xUD-rT-Mqe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Z0p-UQ-0Cz"/>
+                <constraint firstAttribute="trailing" secondItem="1ap-0b-bGe" secondAttribute="trailing" constant="25" id="h8t-aR-SrL"/>
+                <constraint firstItem="dp4-ws-92v" firstAttribute="top" secondItem="1ap-0b-bGe" secondAttribute="bottom" constant="5" id="tlG-cw-dZ1"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundImage" destination="xUD-rT-Mqe" id="MFA-BH-sF7"/>
+                <outlet property="subtitle" destination="dp4-ws-92v" id="xuA-2s-naH"/>
+                <outlet property="title" destination="1ap-0b-bGe" id="hyX-ir-FXM"/>
+            </connections>
+            <point key="canvasLocation" x="131.15942028985509" y="116.51785714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
