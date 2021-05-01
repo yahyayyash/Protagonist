@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import CoreData
+import AVKit
 
 class JournalEntriesController: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selected: JournalData?
     var selectedContext: Int?
     var entryList: [JournalEntry]?
@@ -29,7 +32,21 @@ class JournalEntriesController: UIViewController {
         journalTable.delegate = self
         journalTable.dataSource = self
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: menuItems())
         interfaceUpdate()
+    }
+    
+    func fetchEntries(){
+        do {
+            let entryRequest = JournalEntry.fetchRequest() as NSFetchRequest<JournalEntry>
+            let name = selected?.title
+            entryRequest.predicate = NSPredicate(format: "journals.title == %@", name!)
+            
+            self.entryList = try context.fetch(entryRequest)
+            journalTable.reloadData()
+        }
+        catch {
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,11 +57,7 @@ class JournalEntriesController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.layoutIfNeeded()
         
-        if selected != nil {
-            entryList = DatabaseDummy.shared.getEntriesByJournal(journal: selected!)
-        }
-        
-        journalTable.reloadData()
+        fetchEntries()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,13 +75,48 @@ class JournalEntriesController: UIViewController {
             destination?.selected = nil
             destination?.selectedGroup = selected!
             break
-
         case .none:
             break
         case .some(_):
             break
         }
-       
+        
+    }
+    
+    func menuItems() -> UIMenu {
+        let addMenuItems = UIMenu(image: nil, options: .displayInline, children: [
+            UIAction(title: "Edit Journal", image: UIImage(systemName: "pencil"), handler: { _ in
+                let modalVC = AddJournalViewController()
+                modalVC.modalPresentationStyle = .overCurrentContext
+                self.present(modalVC, animated: true, completion: nil)
+            }),
+            UIAction(title: "Delete Journal", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
+                let alert = UIAlertController(
+                    title: "Delete \"\(self.selected?.title ?? "Journal")\" ?",
+                    message: "This will delete all entries in this journal.",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(
+                                    title: "Delete",
+                                    style: UIAlertAction.Style.destructive,
+                                    handler: { action in
+                                        self.performSegue(withIdentifier: "unwindToA", sender: self)
+                                        let journalToRemove = self.selected
+                                        self.context.delete(journalToRemove!)
+                                        
+                                        do {
+                                            try self.context.save()
+                                        }
+                                        catch{}
+                                    }))
+                alert.addAction(UIAlertAction(
+                                    title: "Cancel",
+                                    style: UIAlertAction.Style.cancel,
+                                    handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            })
+        ])
+        
+        return addMenuItems
     }
     
     func interfaceUpdate() {
@@ -133,7 +181,13 @@ extension JournalEntriesController: UITableViewDataSource {
             let cell = journalTable.dequeueReusableCell(withIdentifier: EntryCell.identifier, for: indexPath) as! EntryCell
             let currentJournal = entryList![indexPath.row - 1]
             
-            cell.videoThumbnail.image = currentJournal.thumbnail
+            if currentJournal.thumbnail != nil {
+                cell.videoThumbnail.image = UIImage(data: currentJournal.thumbnail!)
+            } else {
+                cell.videoThumbnail.image = UIImage(named: "")
+                cell.playButton.isHidden = true
+            }
+            
             cell.textDescription.text = currentJournal.textDescription
             cell.dateLabel.text = customDateFormatter(dateInput: currentJournal.date ?? Date())[0]
             cell.monthLabel.text = customDateFormatter(dateInput: currentJournal.date ?? Date())[1]
@@ -144,7 +198,7 @@ extension JournalEntriesController: UITableViewDataSource {
         }
         let cell = journalTable.dequeueReusableCell(withIdentifier: SubtitleCell.identifier) as! SubtitleCell
         
-        cell.subtitleCell.text = selected?.description
+        cell.subtitleCell.text = selected?.subtitle
         
         return cell
     }
@@ -175,25 +229,42 @@ extension JournalEntriesController: UITableViewDataSource {
                 let playAction = UIAction(
                     title: "Play",
                     image: UIImage(systemName: "play.rectangle")) { _ in
-                    print("Map Action")
+                    let player = AVPlayer(url: self.entryList![index - 1].video!)
+                    let vcPlayer = AVPlayerViewController()
+                    vcPlayer.player = player
+                    self.present(vcPlayer, animated: true, completion: nil)
                 }
                     
                     // 4
                 let editAction = UIAction(
                     title: "Edit",
                     image: UIImage(systemName: "pencil")) { _ in
+                    
                     self.selectedContext = index
                     self.performSegue(withIdentifier: "editEntrySegue", sender: self)
                 }
                     
-                    let deleteAction = UIAction(
-                        title: "Delete",
-                        image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
-                        print("Delete Action")
+                    let deleteConfirmation = UIAction(title: "Delete Entry", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                        let entryToRemove = self.entryList![index - 1]
+                        self.context.delete(entryToRemove)
+                        do {
+                            try self.context.save()
+                        }
+                        catch {
+                            
+                        }
+                        self.fetchEntries()
                     }
+                
+                let deleteAction = UIMenu(
+                    title: "Delete Entry",
+                    image: UIImage(systemName: "trash"), options: .destructive, children: [deleteConfirmation])
                     
-                    // 5
-                return UIMenu(title: "", image: nil, children: [playAction, editAction, deleteAction])
+                    if self.entryList![index - 1].video != nil {
+                        return UIMenu(title: "", image: nil, children: [playAction, editAction, deleteAction])
+                    } else {
+                        return UIMenu(title: "", image: nil, children: [editAction, deleteAction])
+                    }
             }
         }
         return nil

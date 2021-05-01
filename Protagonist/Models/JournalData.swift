@@ -1,13 +1,13 @@
+////
+////  JournalData.swift
+////  Protagonist
+////
+////  Created by Yahya Ayyash on 30/04/21.
+////
 //
-//  JournalData.swift
-//  Protagonist
+//import Foundation
 //
-//  Created by Yahya Ayyash on 30/04/21.
-//
-
-import Foundation
-
-struct JournalData{
-    var title: String
-    var description: String
-}
+//struct JournalData{
+//    var title: String
+//    var description: String
+//}

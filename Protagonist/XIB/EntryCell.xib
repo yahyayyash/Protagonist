@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-rM-1Jb">
-                        <rect key="frame" x="20" y="10" width="35" height="30"/>
+                        <rect key="frame" x="20" y="10" width="35" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="uEM-hz-k0K"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAe-k4-psV" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                        <rect key="frame" x="20" y="40" width="35" height="28"/>
+                        <rect key="frame" x="20" y="38" width="35" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="u4L-Gh-LcY"/>
                         </constraints>
@@ -88,7 +88,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="BF4-Us-ode" secondAttribute="bottom" id="54s-jt-1Yp"/>
                                     <constraint firstItem="BF4-Us-ode" firstAttribute="top" secondItem="nof-xG-1hn" secondAttribute="top" id="KBh-eC-qqh"/>
@@ -140,7 +140,7 @@
     </objects>
     <designables>
         <designable name="lAe-k4-psV">
-            <size key="intrinsicContentSize" width="19" height="28"/>
+            <size key="intrinsicContentSize" width="19.5" height="27"/>
         </designable>
     </designables>
     <resources>

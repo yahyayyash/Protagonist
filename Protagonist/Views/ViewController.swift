@@ -10,10 +10,8 @@ import Foundation
 
 class ViewController: UIViewController {
     
-    //    Testing with no journal entry condition
-    //    var journalList = [JournalData]()
-    var journalList = DatabaseDummy.shared.getJournals()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var journalList: [JournalData]?
     
     @IBOutlet weak var journalCollection: UICollectionView!
     @IBOutlet weak var userName: UILabel!
@@ -21,8 +19,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let journalCell = UINib(nibName: JournalCell.identifier, bundle: nil)
         let journalPlaceholder = UINib(nibName: JournalCellPlaceholder.identifier, bundle: nil)
@@ -33,6 +29,7 @@ class ViewController: UIViewController {
         journalCollection.delegate = self
         journalCollection.dataSource = self
         
+        self.fetchJournal()
     }
     
     @IBAction func segueModal(_ sender: Any) {
@@ -41,11 +38,26 @@ class ViewController: UIViewController {
         present(modalVC, animated: true, completion: nil)
     }
     
+    @IBAction func unwindToViewControllerA(segue:UIStoryboardSegue){
+        
+    }
+    
+    func fetchJournal(){
+        do {
+            self.journalList = try context.fetch(JournalData.fetchRequest())
+            DispatchQueue.main.async {
+                self.journalCollection.reloadData()
+            }
+        }
+        catch {
+            
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        journalList = DatabaseDummy.shared.getJournals()
-        journalCollection.reloadData()
+        self.fetchJournal()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,14 +67,14 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? JournalEntriesController
-        journalList = DatabaseDummy.shared.getJournals()
+        self.fetchJournal()
         switch segue.identifier {
         case "journalSegue":
-            let selectedRow = journalCollection.indexPathsForSelectedItems?[0].row
-            destination?.selected = journalList[selectedRow!]
+            let selectedRow = journalCollection.indexPathsForSelectedItems?[0].row ?? 0
+            destination?.selected = journalList?[selectedRow]
             break
         case "latestSegue":
-            destination?.selected = journalList.last
+            destination?.selected = journalList?.last
             break
         case .none:
             break
@@ -80,21 +92,21 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if journalList.count > 0 {
-            return journalList.count
+        if (journalList?.count ?? 0) > 0 {
+            return journalList!.count
         }
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if journalList.count > 0 {
+        if (journalList?.count ?? 0) > 0 {
             let cell = journalCollection.dequeueReusableCell(withReuseIdentifier: JournalCellPlaceholder.identifier, for: indexPath) as! JournalCellPlaceholder
-            let currentJournal = journalList[indexPath.row]
+            let currentJournal = journalList?[indexPath.row]
             
             cell.cellNumber.text = "0\(indexPath.row + 1)"
-            cell.journalName.text = currentJournal.title
-            cell.journalDescription.text = currentJournal.description
+            cell.journalName.text = currentJournal?.title
+            cell.journalDescription.text = currentJournal?.subtitle
             return cell
         }
         let cell = journalCollection.dequeueReusableCell(withReuseIdentifier: JournalCell.identifier, for: indexPath) as! JournalCell
@@ -106,6 +118,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
 }
 
+// MARK: - UICollectionViewFlowLayout
 class CollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint
     {

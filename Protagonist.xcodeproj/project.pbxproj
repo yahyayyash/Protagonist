@@ -13,8 +13,6 @@
 		9001776D263BA2F0004E781B /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9001776C263BA2F0004E781B /* SubtitleCell.swift */; };
 		900A961F263AD7AC000A095D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A961E263AD7AC000A095D /* CustomLabel.swift */; };
 		900A9621263AFC7A000A095D /* EditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900A9620263AFC7A000A095D /* EditorController.swift */; };
-		9024F6E1263D01EC0012DC79 /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024F6DD263D01EC0012DC79 /* Entry+CoreDataClass.swift */; };
-		9024F6E3263D01EC0012DC79 /* Journal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9024F6DF263D01EC0012DC79 /* Journal+CoreDataClass.swift */; };
 		9034C37F263C316800D4F00C /* GenericButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034C37E263C316800D4F00C /* GenericButton.swift */; };
 		9034C382263C4FF600D4F00C /* AddJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9034C380263C4FF600D4F00C /* AddJournalViewController.swift */; };
 		9034C383263C4FF600D4F00C /* AddJournalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9034C381263C4FF600D4F00C /* AddJournalViewController.xib */; };
@@ -38,6 +36,10 @@
 		908B34A8263A678E002A6881 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B34A6263A678E002A6881 /* EntryCell.swift */; };
 		908B34A9263A678E002A6881 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908B34A7263A678E002A6881 /* EntryCell.xib */; };
 		908B34D0263A72CB002A6881 /* JournalEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B34CF263A72CB002A6881 /* JournalEntriesController.swift */; };
+		9099F512263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */; };
+		9099F513263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */; };
+		9099F514263D74B40099A3F3 /* JournalData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */; };
+		9099F515263D74B40099A3F3 /* JournalData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F511263D74B40099A3F3 /* JournalData+CoreDataProperties.swift */; };
 		90D331B0263B0E4D00AC4913 /* RoundedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D331AF263B0E4D00AC4913 /* RoundedCard.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +50,6 @@
 		9001776C263BA2F0004E781B /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		900A961E263AD7AC000A095D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		900A9620263AFC7A000A095D /* EditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorController.swift; sourceTree = "<group>"; };
-		9024F6DD263D01EC0012DC79 /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		9024F6DF263D01EC0012DC79 /* Journal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9034C37E263C316800D4F00C /* GenericButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericButton.swift; sourceTree = "<group>"; };
 		9034C380263C4FF600D4F00C /* AddJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalViewController.swift; sourceTree = "<group>"; };
 		9034C381263C4FF600D4F00C /* AddJournalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddJournalViewController.xib; sourceTree = "<group>"; };
@@ -75,6 +75,10 @@
 		908B34A6263A678E002A6881 /* EntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		908B34A7263A678E002A6881 /* EntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
 		908B34CF263A72CB002A6881 /* JournalEntriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntriesController.swift; sourceTree = "<group>"; };
+		9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9099F511263D74B40099A3F3 /* JournalData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		90D331AF263B0E4D00AC4913 /* RoundedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +96,10 @@
 		908B34512639954C002A6881 = {
 			isa = PBXGroup;
 			children = (
+				9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */,
+				9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */,
+				9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */,
+				9099F511263D74B40099A3F3 /* JournalData+CoreDataProperties.swift */,
 				908B345C2639954C002A6881 /* Protagonist */,
 				908B345B2639954C002A6881 /* Products */,
 			);
@@ -132,8 +140,6 @@
 				90D331AF263B0E4D00AC4913 /* RoundedCard.swift */,
 				900A961E263AD7AC000A095D /* CustomLabel.swift */,
 				9034C37E263C316800D4F00C /* GenericButton.swift */,
-				9024F6DD263D01EC0012DC79 /* Entry+CoreDataClass.swift */,
-				9024F6DF263D01EC0012DC79 /* Journal+CoreDataClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,25 +279,27 @@
 			files = (
 				90017767263B72A5004E781B /* JournalData.swift in Sources */,
 				908B34902639A84D002A6881 /* JournalCell.swift in Sources */,
+				9099F513263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift in Sources */,
 				9034C387263C6E6300D4F00C /* VideoHelper.swift in Sources */,
-				9024F6E3263D01EC0012DC79 /* Journal+CoreDataClass.swift in Sources */,
 				908B34622639954C002A6881 /* ViewController.swift in Sources */,
 				9034C37F263C316800D4F00C /* GenericButton.swift in Sources */,
 				9001776D263BA2F0004E781B /* SubtitleCell.swift in Sources */,
+				9099F515263D74B40099A3F3 /* JournalData+CoreDataProperties.swift in Sources */,
 				900A961F263AD7AC000A095D /* CustomLabel.swift in Sources */,
 				90017769263B72F7004E781B /* JournalEntry.swift in Sources */,
 				908B34A8263A678E002A6881 /* EntryCell.swift in Sources */,
 				9001776B263B796C004E781B /* DatabaseDummy.swift in Sources */,
 				908B349E263A2019002A6881 /* JournalCellPlaceholder.swift in Sources */,
 				90D331B0263B0E4D00AC4913 /* RoundedCard.swift in Sources */,
+				9099F512263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift in Sources */,
 				9034C385263C6A8700D4F00C /* RecordVideoController.swift in Sources */,
 				900A9621263AFC7A000A095D /* EditorController.swift in Sources */,
 				908B34D0263A72CB002A6881 /* JournalEntriesController.swift in Sources */,
 				908B345E2639954C002A6881 /* AppDelegate.swift in Sources */,
-				9024F6E1263D01EC0012DC79 /* Entry+CoreDataClass.swift in Sources */,
 				908B34682639954C002A6881 /* Protagonist.xcdatamodeld in Sources */,
 				9034C382263C4FF600D4F00C /* AddJournalViewController.swift in Sources */,
 				908B34602639954C002A6881 /* SceneDelegate.swift in Sources */,
+				9099F514263D74B40099A3F3 /* JournalData+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

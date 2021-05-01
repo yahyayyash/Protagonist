@@ -9,6 +9,8 @@ import UIKit
 
 class AddJournalViewController: UIViewController {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     @IBOutlet weak var tapView: UIVisualEffectView!
     @IBOutlet weak var popupModal: UIView!
     @IBOutlet weak var journalName: UITextField!
@@ -51,12 +53,6 @@ class AddJournalViewController: UIViewController {
         )
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as? JournalEntriesController
-        let selectedJournal = DatabaseDummy.shared.getJournals().last
-        destination?.selected = selectedJournal
-    }
-    
     func dismissKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action:    #selector(dismissKeyboardTouchOutside))
         tap.cancelsTouchesInView = false
@@ -87,14 +83,21 @@ class AddJournalViewController: UIViewController {
     }
     
     @IBAction func createJournal(_ sender: UIButton) {
-        DatabaseDummy.shared.addJournal(title: journalName.text ?? "Untitled", description: journalDescription.text ?? "Your description here")
+        let newJournal = JournalData(context: self.context)
+        newJournal.title = journalName.text ?? "Untitled"
+        newJournal.subtitle = journalDescription.text ?? "Your description here"
+        
+        do {
+            try self.context.save()
+        }
+        catch {
+            
+        }
+
         weak var pvc = self.presentingViewController?.children[0]
-        pvc?.performSegue(withIdentifier: "latestSegue", sender: nil)
-        dismiss(animated: true, completion: nil)
-//        self.dismiss(animated: true, completion: {
-//            pvc?.performSegue(withIdentifier: "latestSegue", sender: nil)
-//        })
-//        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            pvc?.performSegue(withIdentifier: "latestSegue", sender: nil)
+        })
     }
     
 }

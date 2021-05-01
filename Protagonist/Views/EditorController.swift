@@ -11,6 +11,7 @@ import MobileCoreServices
 
 class EditorController: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selected: JournalEntry?
     var selectedGroup: JournalData?
     var videoUrlHandler: URL?
@@ -91,7 +92,7 @@ class EditorController: UIViewController {
                                     VideoHelper.startMediaBrowser(delegate: self, sourceType: .savedPhotosAlbum)
                                 }))
             alert.addAction(UIAlertAction(
-                                title: "Cancel",
+                                title:"Cancel",
                                 style: UIAlertAction.Style.cancel,
                                 handler: nil))
             present(alert, animated: true, completion: nil)
@@ -132,25 +133,26 @@ class EditorController: UIViewController {
     }
     
     func selectedIsExist(){
-        self.title = selected?.journalGroup?.title
-        (selected?.video) != nil ? (playButton.isUserInteractionEnabled = true) : (playButton.isUserInteractionEnabled = false)
-        playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        videoThumbnail.image = selected?.thumbnail
+        self.title = selected?.journals?.title
+        if selected?.video != nil {
+            self.playButton.isUserInteractionEnabled = true
+            self.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        } else {
+            self.playButton.isUserInteractionEnabled = false
+            self.playButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        }
+        
+        if (selected?.thumbnail) != nil {
+            videoThumbnail.image = UIImage(data: (selected?.thumbnail)!)
+        }
         journalText.text = selected?.textDescription
     }
     
     func saveEntryAlert(){
         let alert = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(
-                            title: "Save",
-                            style: UIAlertAction.Style.default,
-                            handler: { action in
-                                self.editEntryHandler = "Save"
-                                self.checkAlertHandler()
-                            }))
+            title: "Content Changed",
+            message: "Do you want to save your edits?",
+            preferredStyle: .alert)
         alert.addAction(UIAlertAction(
                             title:"Discard",
                             style: UIAlertAction.Style.destructive,
@@ -159,10 +161,10 @@ class EditorController: UIViewController {
                                 self.checkAlertHandler()
                             }))
         alert.addAction(UIAlertAction(
-                            title: "Cancel",
-                            style: UIAlertAction.Style.cancel,
+                            title: "Save",
+                            style: UIAlertAction.Style.default,
                             handler: { action in
-                                self.editEntryHandler = "Cancel"
+                                self.editEntryHandler = "Save"
                                 self.checkAlertHandler()
                             }))
         present(alert, animated: true, completion: nil)
@@ -171,19 +173,44 @@ class EditorController: UIViewController {
     func checkAlertHandler(){
         switch editEntryHandler {
         case "Save":
+            
+            // Create new entry
             if selected == nil {
-                DatabaseDummy.shared.addEntry(group: selectedGroup!, date: Date(), description: journalText.text, thumbnail: videoThumbnailHandler ?? #imageLiteral(resourceName: "entry-5"), video: videoUrlHandler!)
-                selected = DatabaseDummy.shared.getEntriesByJournal(journal: selectedGroup!).last
+                let newEntry = JournalEntry(context: self.context)
+                newEntry.date = Date()
+                newEntry.journals = selectedGroup
+                newEntry.textDescription = journalText.text
+                newEntry.thumbnail = videoThumbnailHandler?.pngData()
+                newEntry.video = videoUrlHandler
+                
+                do {
+                    try self.context.save()
+                    selected = newEntry
+                }
+                catch {
+                    
+                }
+            
+            // Update current entry
             } else {
-                DatabaseDummy.shared.editDescription(entry: selected!, text: journalText.text)
+                selected?.textDescription = journalText.text
+                if selected?.video == nil {
+                    selected?.video = videoUrlHandler
+                    selected?.thumbnail = videoThumbnailHandler?.pngData()
+                }
+                do {
+                    try self.context.save()
+                }
+                catch{
+                    
+                }
             }
             dissmissEntryAlert()
-            print("Save")
+            
         case "Discard":
             dissmissEntryAlert()
-            print("Discard")
+            
         default:
-            print("Cancel")
             break
         }
     }
@@ -193,6 +220,11 @@ class EditorController: UIViewController {
             journalText.text = selected?.textDescription
         } else {
             journalText.text = ""
+        }
+        if selected?.thumbnail != nil {
+            videoThumbnail.image = UIImage(data: (selected?.thumbnail)!)
+        } else {
+            videoThumbnail.image = UIImage(named: "")
         }
         journalText.isEditable = false
         textPlaceholder.layer.borderColor = UIColor(red: 34/255, green: 4/255, blue: 4/255, alpha: 0.05).cgColor
