@@ -2,7 +2,7 @@
 //  Journal+CoreDataClass.swift
 //  Protagonist
 //
-//  Created by Yahya Ayyash on 28/04/21.
+//  Created by Yahya Ayyash on 01/05/21.
 //
 //
 

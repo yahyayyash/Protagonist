@@ -8,8 +8,6 @@
 import UIKit
 
 class AddJournalViewController: UIViewController {
-    
-    var delegate: testPassing?
 
     @IBOutlet weak var tapView: UIVisualEffectView!
     @IBOutlet weak var popupModal: UIView!

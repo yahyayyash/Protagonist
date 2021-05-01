@@ -158,7 +158,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subtitleCell" id="Zfd-zN-wnD" customClass="SubtitleCell" customModule="Protagonist" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="subtitleCell" id="Zfd-zN-wnD" customClass="SubtitleCell" customModule="Protagonist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zfd-zN-wnD" id="hfL-RZ-Qec">
@@ -166,7 +166,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor amet sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y4-TN-RYr" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                                                    <rect key="frame" x="20" y="-3" width="204.5" height="22"/>
+                                                    <rect key="frame" x="20" y="-3" width="199.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -175,10 +175,10 @@
                                                             <real key="value" value="7"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="offset">
-                                                            <real key="value" value="11"/>
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
                                                             <real key="value" value="5"/>
@@ -206,7 +206,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgM-RJ-lvg">
-                                <rect key="frame" x="182" y="761" width="50" height="50"/>
+                                <rect key="frame" x="182" y="767" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="4W8-0Y-0SQ"/>
                                     <constraint firstAttribute="width" secondItem="EgM-RJ-lvg" secondAttribute="height" multiplier="1:1" id="CDq-UJ-N6z"/>
@@ -215,9 +215,12 @@
                                 <state key="normal" image="icon-plus">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Tlt-B2-FAr" kind="show" identifier="newEntrySegue" id="hTy-A2-Rs4"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Journal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yga-Hh-Dh3" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                                <rect key="frame" x="166" y="821" width="82.5" height="21"/>
+                                <rect key="frame" x="176" y="827" width="62.5" height="15"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -263,6 +266,7 @@
                         <outlet property="buttonLabel" destination="yga-Hh-Dh3" id="jpF-sJ-5hk"/>
                         <outlet property="journalTable" destination="Z6G-KN-h8n" id="d53-mX-8ps"/>
                         <segue destination="Tlt-B2-FAr" kind="show" identifier="entrySegue" id="nTo-Hm-KKT"/>
+                        <segue destination="Tlt-B2-FAr" kind="show" identifier="editEntrySegue" id="QQ9-WY-eke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLc-gY-Mob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -278,18 +282,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C4-cN-5df">
-                                <rect key="frame" x="20" y="338.5" width="27" height="29.5"/>
+                                <rect key="frame" x="20" y="338.5" width="35" height="29.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="2El-NE-GLb"/>
+                                    <constraint firstAttribute="width" constant="35" id="2El-NE-GLb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfn-70-09G" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                                <rect key="frame" x="20" y="368" width="27" height="28"/>
+                                <rect key="frame" x="20" y="368" width="35" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="cUZ-SK-1Ip"/>
+                                    <constraint firstAttribute="width" constant="35" id="cUZ-SK-1Ip"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -312,7 +316,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5O-BD-sNy">
                                 <rect key="frame" x="20" y="108" width="374" height="210.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hU5-Yo-ZjU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hU5-Yo-ZjU">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="210.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hU5-Yo-ZjU" secondAttribute="height" multiplier="16:9" id="YMS-BO-IGO"/>
@@ -331,9 +335,12 @@
                                             <imageReference key="image" image="play.circle.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectSource:" destination="Tlt-B2-FAr" eventType="touchUpInside" id="iQC-mG-oAo"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstItem="hU5-Yo-ZjU" firstAttribute="top" secondItem="w5O-BD-sNy" secondAttribute="top" id="FBA-Rj-Sf2"/>
                                     <constraint firstAttribute="trailing" secondItem="hU5-Yo-ZjU" secondAttribute="trailing" id="H3B-PJ-fDk"/>
@@ -345,10 +352,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDI-7v-NZR" customClass="RoundedCard" customModule="Protagonist" customModuleProvider="target">
-                                <rect key="frame" x="62" y="338.5" width="332" height="503.5"/>
+                                <rect key="frame" x="70" y="338.5" width="324" height="503.5"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmT-fO-TeO" customClass="GenericTextView" customModule="Protagonist" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="312" height="483.5"/>
+                                        <rect key="frame" x="10" y="10" width="304" height="483.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
@@ -389,6 +396,7 @@
                         <outlet property="mediaPlaceholder" destination="w5O-BD-sNy" id="cKN-Mk-FOC"/>
                         <outlet property="monthLabel" destination="yfn-70-09G" id="9aA-uE-kcu"/>
                         <outlet property="playButton" destination="sgg-cd-Aka" id="ZXq-MP-L3s"/>
+                        <outlet property="textPlaceholder" destination="gDI-7v-NZR" id="wCF-3I-e9b"/>
                         <outlet property="videoThumbnail" destination="hU5-Yo-ZjU" id="KoJ-d0-r4m"/>
                     </connections>
                 </viewController>
@@ -399,19 +407,20 @@
     </scenes>
     <designables>
         <designable name="4Y4-TN-RYr">
-            <size key="intrinsicContentSize" width="204.5" height="22"/>
+            <size key="intrinsicContentSize" width="199.5" height="17"/>
         </designable>
         <designable name="DRb-sP-qdq">
             <size key="intrinsicContentSize" width="112.5" height="44"/>
         </designable>
         <designable name="yfn-70-09G">
-            <size key="intrinsicContentSize" width="19" height="28"/>
+            <size key="intrinsicContentSize" width="19" height="15"/>
         </designable>
         <designable name="yga-Hh-Dh3">
-            <size key="intrinsicContentSize" width="82.5" height="21"/>
+            <size key="intrinsicContentSize" width="62.5" height="15"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="hTy-A2-Rs4"/>
         <segue reference="NeZ-P2-2sZ"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -419,9 +428,11 @@
         <image name="icon-plus" width="50" height="50"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="play.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="video-placeholder" width="263" height="150"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

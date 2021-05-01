@@ -13,5 +13,5 @@ struct JournalEntry{
     var date: Date?
     var textDescription: String?
     var thumbnail: UIImage?
-    var video: String?
+    var video: URL?
 }

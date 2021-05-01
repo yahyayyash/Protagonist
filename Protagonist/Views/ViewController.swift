@@ -8,11 +8,12 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController, testPassing {
+class ViewController: UIViewController {
     
     //    Testing with no journal entry condition
     //    var journalList = [JournalData]()
     var journalList = DatabaseDummy.shared.getJournals()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var journalCollection: UICollectionView!
     @IBOutlet weak var userName: UILabel!
@@ -20,6 +21,8 @@ class ViewController: UIViewController, testPassing {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let journalCell = UINib(nibName: JournalCell.identifier, bundle: nil)
         let journalPlaceholder = UINib(nibName: JournalCellPlaceholder.identifier, bundle: nil)
@@ -34,13 +37,8 @@ class ViewController: UIViewController, testPassing {
     
     @IBAction func segueModal(_ sender: Any) {
         let modalVC = AddJournalViewController()
-        modalVC.delegate = self
         modalVC.modalPresentationStyle = .overCurrentContext
         present(modalVC, animated: true, completion: nil)
-    }
-    
-    func testPrint() {
-        print("It's working.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,9 +143,5 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         }
         return CGPoint.zero
     }
-}
-
-protocol testPassing {
-    func prepare(for segue: UIStoryboardSegue, sender: Any?)
 }
 

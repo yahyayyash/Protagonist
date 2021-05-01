@@ -7,9 +7,10 @@
 
 import UIKit
 
-class JournalEntriesController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class JournalEntriesController: UIViewController {
     
     var selected: JournalData?
+    var selectedContext: Int?
     var entryList: [JournalEntry]?
     
     @IBOutlet weak var journalTable: UITableView!
@@ -48,8 +49,26 @@ class JournalEntriesController: UIViewController, UIImagePickerControllerDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? EditorController
-        let selectedRow = journalTable.indexPathForSelectedRow?.row
-        destination?.selected = entryList![selectedRow! - 1]
+        switch segue.identifier {
+        case "entrySegue":
+            let selectedRow = journalTable.indexPathForSelectedRow?.row
+            destination?.selected = entryList![selectedRow! - 1]
+            break
+        case "editEntrySegue":
+            destination?.selected = entryList![selectedContext! - 1]
+            destination?.isEditRightAway = true
+            break
+        case "newEntrySegue":
+            destination?.selected = nil
+            destination?.selectedGroup = selected!
+            break
+
+        case .none:
+            break
+        case .some(_):
+            break
+        }
+       
     }
     
     func interfaceUpdate() {
@@ -116,6 +135,9 @@ extension JournalEntriesController: UITableViewDataSource {
             
             cell.videoThumbnail.image = currentJournal.thumbnail
             cell.textDescription.text = currentJournal.textDescription
+            cell.dateLabel.text = customDateFormatter(dateInput: currentJournal.date ?? Date())[0]
+            cell.monthLabel.text = customDateFormatter(dateInput: currentJournal.date ?? Date())[1]
+            
             cell.selectionStyle = .none
             
             return cell
@@ -160,7 +182,8 @@ extension JournalEntriesController: UITableViewDataSource {
                 let editAction = UIAction(
                     title: "Edit",
                     image: UIImage(systemName: "pencil")) { _ in
-                    print("Share Action")
+                    self.selectedContext = index
+                    self.performSegue(withIdentifier: "editEntrySegue", sender: self)
                 }
                     
                     let deleteAction = UIAction(
@@ -193,4 +216,17 @@ extension JournalEntriesController: UITableViewDataSource {
     }
 }
 
-
+func customDateFormatter(dateInput: Date) -> [String] {
+    var date = ""
+    var month = ""
+    
+    let dayFormatter = DateFormatter()
+    dayFormatter.setLocalizedDateFormatFromTemplate("dd")
+    date = dayFormatter.string(from: dateInput)
+    
+    let monthFormatter = DateFormatter()
+    monthFormatter.setLocalizedDateFormatFromTemplate("MMM")
+    month = monthFormatter.string(from: dateInput)
+    
+    return [date, month]
+}
