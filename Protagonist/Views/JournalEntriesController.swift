@@ -41,8 +41,8 @@ class JournalEntriesController: UIViewController {
             let entryRequest = JournalEntry.fetchRequest() as NSFetchRequest<JournalEntry>
             let name = selected?.title
             entryRequest.predicate = NSPredicate(format: "journals.title == %@", name!)
-            
             self.entryList = try context.fetch(entryRequest)
+            
             journalTable.reloadData()
         }
         catch {
@@ -58,6 +58,8 @@ class JournalEntriesController: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
         
         fetchEntries()
+        interfaceUpdate()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,9 +88,13 @@ class JournalEntriesController: UIViewController {
     func menuItems() -> UIMenu {
         let addMenuItems = UIMenu(image: nil, options: .displayInline, children: [
             UIAction(title: "Edit Journal", image: UIImage(systemName: "pencil"), handler: { _ in
+                
                 let modalVC = AddJournalViewController()
                 modalVC.modalPresentationStyle = .overCurrentContext
+                modalVC.sourceView = "editEntry"
+                modalVC.sourceJournal = self.selected
                 self.present(modalVC, animated: true, completion: nil)
+                
             }),
             UIAction(title: "Delete Journal", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
                 let alert = UIAlertController(

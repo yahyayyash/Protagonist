@@ -40,6 +40,7 @@
 		9099F513263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */; };
 		9099F514263D74B40099A3F3 /* JournalData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */; };
 		9099F515263D74B40099A3F3 /* JournalData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F511263D74B40099A3F3 /* JournalData+CoreDataProperties.swift */; };
+		9099F517263E0F750099A3F3 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F516263E0F750099A3F3 /* ModalViewController.swift */; };
 		90D331B0263B0E4D00AC4913 /* RoundedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D331AF263B0E4D00AC4913 /* RoundedCard.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9099F511263D74B40099A3F3 /* JournalData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9099F516263E0F750099A3F3 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		90D331AF263B0E4D00AC4913 /* RoundedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				908B34612639954C002A6881 /* ViewController.swift */,
 				908B34CF263A72CB002A6881 /* JournalEntriesController.swift */,
 				900A9620263AFC7A000A095D /* EditorController.swift */,
+				9099F516263E0F750099A3F3 /* ModalViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				90D331B0263B0E4D00AC4913 /* RoundedCard.swift in Sources */,
 				9099F512263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift in Sources */,
 				9034C385263C6A8700D4F00C /* RecordVideoController.swift in Sources */,
+				9099F517263E0F750099A3F3 /* ModalViewController.swift in Sources */,
 				900A9621263AFC7A000A095D /* EditorController.swift in Sources */,
 				908B34D0263A72CB002A6881 /* JournalEntriesController.swift in Sources */,
 				908B345E2639954C002A6881 /* AppDelegate.swift in Sources */,

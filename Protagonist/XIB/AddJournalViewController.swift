@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class AddJournalViewController: UIViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var sourceDestination: JournalEntriesController = JournalEntriesController(nibName: nil, bundle: nil)
+    
+    var sourceView = ""
+    var sourceJournal: JournalData?
     
     @IBOutlet weak var tapView: UIVisualEffectView!
     @IBOutlet weak var popupModal: UIView!
@@ -38,6 +43,16 @@ class AddJournalViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        switch sourceView {
+        case "editEntry":
+            journalName.text = sourceJournal?.title
+            journalDescription.text = sourceJournal?.subtitle
+            createButton.setTitle("Save", for: .normal)
+            break
+        default:
+            break
+        }
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(EditorController.handleKeyboardDidShow(notification:)),
@@ -83,23 +98,39 @@ class AddJournalViewController: UIViewController {
     }
     
     @IBAction func createJournal(_ sender: UIButton) {
-        let newJournal = JournalData(context: self.context)
-        newJournal.title = journalName.text ?? "Untitled"
-        newJournal.subtitle = journalDescription.text ?? "Your description here"
-        
-        do {
-            try self.context.save()
-        }
-        catch {
-            
-        }
+        switch sourceView {
+        case "createEntry":
+            let newJournal = JournalData(context: self.context)
+            newJournal.title = journalName.text ?? "Untitled"
+            newJournal.subtitle = journalDescription.text ?? "Your description here"
+            do {
+                try self.context.save()
+            }
+            catch {
+                
+            }
+            weak var pvc = self.presentingViewController?.children[0]
+            self.dismiss(animated: true, completion: {
+                pvc?.performSegue(withIdentifier: "latestSegue", sender: nil)
+            })
+            break
+        case "editEntry":
+            sourceJournal?.title = journalName.text ?? "Untitled"
+            sourceJournal?.subtitle = journalDescription.text ?? "Your description here"
+            do {
+                try self.context.save()
 
-        weak var pvc = self.presentingViewController?.children[0]
-        self.dismiss(animated: true, completion: {
-            pvc?.performSegue(withIdentifier: "latestSegue", sender: nil)
-        })
+            }
+            catch {
+                
+            }
+            self.dismiss(animated: true, completion: nil)
+            break
+        default:
+            break
+        }
+        self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension UITextField {

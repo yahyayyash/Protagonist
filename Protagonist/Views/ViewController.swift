@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     @IBAction func segueModal(_ sender: Any) {
         let modalVC = AddJournalViewController()
         modalVC.modalPresentationStyle = .overCurrentContext
+        modalVC.sourceView = "createEntry"
         present(modalVC, animated: true, completion: nil)
     }
     
