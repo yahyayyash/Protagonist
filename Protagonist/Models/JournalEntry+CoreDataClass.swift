@@ -11,5 +11,10 @@ import CoreData
 
 @objc(JournalEntry)
 public class JournalEntry: NSManagedObject {
-
+    @objc var isoDate: String { get {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return formatter.string(from: date! as Date)
+    }}
 }

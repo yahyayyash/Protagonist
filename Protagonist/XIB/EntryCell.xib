@@ -26,8 +26,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="290"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-rM-1Jb">
-                        <rect key="frame" x="20" y="10" width="35" height="28"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-rM-1Jb">
+                        <rect key="frame" x="20" y="10" width="35" height="29.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="uEM-hz-k0K"/>
                         </constraints>
@@ -35,8 +35,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAe-k4-psV" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                        <rect key="frame" x="20" y="38" width="35" height="27"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAe-k4-psV" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
+                        <rect key="frame" x="20" y="39.5" width="35" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="u4L-Gh-LcY"/>
                         </constraints>
@@ -59,10 +59,10 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0H-7t-XVd" customClass="RoundedCard" customModule="Protagonist" customModuleProvider="target">
-                        <rect key="frame" x="70" y="0.0" width="310" height="270"/>
+                        <rect key="frame" x="70" y="0.0" width="310" height="280"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyo-td-5TV">
-                                <rect key="frame" x="15" y="189" width="280" height="66"/>
+                                <rect key="frame" x="15" y="189" width="280" height="76"/>
                                 <string key="text">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor</string>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -116,7 +116,7 @@
                 <constraints>
                     <constraint firstItem="lAe-k4-psV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6ds-wc-ODM"/>
                     <constraint firstItem="jZ4-rM-1Jb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9MT-lh-FSl"/>
-                    <constraint firstAttribute="bottom" secondItem="T0H-7t-XVd" secondAttribute="bottom" constant="20" id="9ay-u8-Pvq"/>
+                    <constraint firstAttribute="bottom" secondItem="T0H-7t-XVd" secondAttribute="bottom" constant="10" id="9ay-u8-Pvq"/>
                     <constraint firstItem="T0H-7t-XVd" firstAttribute="leading" secondItem="jZ4-rM-1Jb" secondAttribute="trailing" constant="15" id="DzD-4M-YIg"/>
                     <constraint firstItem="T0H-7t-XVd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NUy-Ph-CUX"/>
                     <constraint firstItem="jZ4-rM-1Jb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="OtH-0S-8Ct"/>
@@ -140,7 +140,7 @@
     </objects>
     <designables>
         <designable name="lAe-k4-psV">
-            <size key="intrinsicContentSize" width="19.5" height="27"/>
+            <size key="intrinsicContentSize" width="19" height="15"/>
         </designable>
     </designables>
     <resources>

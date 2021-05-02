@@ -159,6 +159,7 @@ class EditorController: UIViewController {
                             handler: { action in
                                 self.editEntryHandler = "Discard"
                                 self.checkAlertHandler()
+                                self.performSegue(withIdentifier: "unwindToB", sender: self)
                             }))
         alert.addAction(UIAlertAction(
                             title: "Save",
@@ -166,6 +167,7 @@ class EditorController: UIViewController {
                             handler: { action in
                                 self.editEntryHandler = "Save"
                                 self.checkAlertHandler()
+                                self.performSegue(withIdentifier: "unwindToB", sender: self)
                             }))
         present(alert, animated: true, completion: nil)
     }

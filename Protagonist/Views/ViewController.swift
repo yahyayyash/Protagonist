@@ -39,13 +39,14 @@ class ViewController: UIViewController {
         present(modalVC, animated: true, completion: nil)
     }
     
-    @IBAction func unwindToViewControllerA(segue:UIStoryboardSegue){
+    @IBAction func unwindToA(_ segue:UIStoryboardSegue){
         
     }
     
     func fetchJournal(){
         do {
             self.journalList = try context.fetch(JournalData.fetchRequest())
+            
             DispatchQueue.main.async {
                 self.journalCollection.reloadData()
             }

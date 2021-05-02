@@ -11,10 +11,10 @@ import CoreData
 class AddJournalViewController: UIViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var sourceDestination: JournalEntriesController = JournalEntriesController(nibName: nil, bundle: nil)
     
     var sourceView = ""
     var sourceJournal: JournalData?
+    var journalEntriesController: JournalEntriesController?
     
     @IBOutlet weak var tapView: UIVisualEffectView!
     @IBOutlet weak var popupModal: UIView!
@@ -119,11 +119,11 @@ class AddJournalViewController: UIViewController {
             sourceJournal?.subtitle = journalDescription.text ?? "Your description here"
             do {
                 try self.context.save()
-
             }
             catch {
                 
             }
+            journalEntriesController?.interfaceUpdate()
             self.dismiss(animated: true, completion: nil)
             break
         default:

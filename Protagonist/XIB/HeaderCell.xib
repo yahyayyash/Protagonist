@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Product Sans Bold.ttf">
+            <string>ProductSans-Bold</string>
+        </array>
+        <array key="Product Sans Regular.ttf">
+            <string>ProductSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="50" id="KGk-i7-Jjw" customClass="HeaderCell" customModule="Protagonist" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6O-K0-sH5">
+                        <rect key="frame" x="0.0" y="15" width="55" height="53"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="Urx-Gc-ICr"/>
+                            <constraint firstAttribute="width" constant="55" id="j17-hR-3lG"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNt-Ag-MtQ">
+                        <rect key="frame" x="20" y="10" width="35" height="29.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="40a-3g-lgj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-AE-LF2" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
+                        <rect key="frame" x="20" y="39.5" width="35" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="1Yo-bi-AWO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                <real key="value" value="13"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="underlineHeight">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="offset">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aNt-Ag-MtQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="9uJ-Sg-V8v"/>
+                    <constraint firstItem="aNt-Ag-MtQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Az8-oC-HUw"/>
+                    <constraint firstItem="IdN-AE-LF2" firstAttribute="top" secondItem="aNt-Ag-MtQ" secondAttribute="bottom" id="J45-Jt-qWV"/>
+                    <constraint firstItem="a6O-K0-sH5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OU3-xe-zvb"/>
+                    <constraint firstItem="a6O-K0-sH5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="kfV-5v-0TC"/>
+                    <constraint firstItem="IdN-AE-LF2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="lF4-R1-nnd"/>
+                    <constraint firstItem="IdN-AE-LF2" firstAttribute="top" secondItem="aNt-Ag-MtQ" secondAttribute="bottom" id="wtL-jr-Sr2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="dateLabel" destination="aNt-Ag-MtQ" id="8HE-Yk-7zn"/>
+                <outlet property="monthLabel" destination="IdN-AE-LF2" id="5cc-yf-FiY"/>
+            </connections>
+            <point key="canvasLocation" x="-17.39130434782609" y="104.46428571428571"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="IdN-AE-LF2">
+            <size key="intrinsicContentSize" width="19" height="15"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
