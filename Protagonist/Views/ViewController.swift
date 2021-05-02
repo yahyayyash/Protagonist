@@ -105,6 +105,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         if (journalList?.count ?? 0) > 0 {
             let cell = journalCollection.dequeueReusableCell(withReuseIdentifier: JournalCellPlaceholder.identifier, for: indexPath) as! JournalCellPlaceholder
             let currentJournal = journalList?[indexPath.row]
+            let lastEntry = currentJournal?.entries?.lastObject as? JournalEntry
+            
+            if lastEntry?.thumbnail != nil {
+                cell.journalThumbnail.image = UIImage(data: (lastEntry?.thumbnail)!)
+                cell.lastUpdate.text = lastEntry?.isoDate
+                cell.lastUpdate.isHidden = false
+                cell.textLast.isHidden = false
+            } else {
+                cell.journalThumbnail.image = UIImage(named: "")
+                cell.lastUpdate.isHidden = true
+                cell.textLast.isHidden = true
+            }
             
             cell.cellNumber.text = "0\(indexPath.row + 1)"
             cell.journalName.text = currentJournal?.title

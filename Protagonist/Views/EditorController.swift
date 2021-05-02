@@ -20,6 +20,12 @@ class EditorController: UIViewController {
     var sourceHandler: String?
     var isEditRightAway: Bool?
     
+    var gradient : CAGradientLayer?
+        let gradientView : UIView = {
+            let view = UIView()
+            return view
+        }()
+    
     @IBOutlet weak var videoThumbnail: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var monthLabel: CustomLabel!
@@ -27,6 +33,7 @@ class EditorController: UIViewController {
     @IBOutlet weak var mediaPlaceholder: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var textPlaceholder: RoundedCard!
+    @IBOutlet weak var journalSubtitle: CustomLabel!
     
     let journalPlaceholderText: String = "Write down your thought here ... \nTap pencil icon to enable editing."
     
@@ -74,9 +81,9 @@ class EditorController: UIViewController {
         }
         if selected?.video == nil {
             let alert = UIAlertController(
-                title: nil,
-                message: nil,
-                preferredStyle: .actionSheet)
+                title: "Add Video",
+                message: "Select media source.",
+                preferredStyle: .alert)
             alert.addAction(UIAlertAction(
                                 title: "Camera",
                                 style: UIAlertAction.Style.default,
@@ -105,6 +112,11 @@ class EditorController: UIViewController {
         
         selected == nil ? selectedIsNil() : selectedIsExist()
         
+        setupClearNavbar()
+        setupGradient()
+        journalSubtitle.layer.cornerRadius = 10
+        journalSubtitle.layer.masksToBounds = true
+        
         if journalText.text.isEmpty {
             journalText.text = journalPlaceholderText
             journalText.textColor = .lightGray
@@ -126,14 +138,32 @@ class EditorController: UIViewController {
         
     }
     
+    func setupGradient() {
+            let height : CGFloat = 125 // Height of the nav bar
+        let color = UIColor.white.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
+            let clear = UIColor.white.withAlphaComponent(0.0).cgColor
+            gradient = setupGradient(height: height, topColor: color,bottomColor: clear)
+            view.addSubview(gradientView)
+            NSLayoutConstraint.activate([
+                gradientView.topAnchor.constraint(equalTo: view.topAnchor),
+                gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            ])
+            gradientView.layer.insertSublayer(gradient!, at: 0)
+        }
+    
     func selectedIsNil(){
         self.title = "New Entry"
+        self.journalSubtitle.text = selected?.journals?.subtitle
+        print(selected?.journals?.subtitle)
+        
         playButton.isUserInteractionEnabled = false
         playButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
     }
     
     func selectedIsExist(){
         self.title = selected?.journals?.title
+        self.journalSubtitle.text = selected?.journals?.subtitle
+        
         if selected?.video != nil {
             self.playButton.isUserInteractionEnabled = true
             self.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
@@ -162,13 +192,17 @@ class EditorController: UIViewController {
                                 self.performSegue(withIdentifier: "unwindToB", sender: self)
                             }))
         alert.addAction(UIAlertAction(
-                            title: "Save",
+                            title: "Save Changes",
                             style: UIAlertAction.Style.default,
                             handler: { action in
                                 self.editEntryHandler = "Save"
                                 self.checkAlertHandler()
                                 self.performSegue(withIdentifier: "unwindToB", sender: self)
                             }))
+        alert.addAction(UIAlertAction(
+                            title: "Cancel",
+                            style: UIAlertAction.Style.cancel,
+                            handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
@@ -247,7 +281,6 @@ extension EditorController: UITextViewDelegate {
             textPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
             mediaPlaceholder.layer.borderWidth = 1.0
             mediaPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
-            print("Edit video")
             
             if journalText.text == journalPlaceholderText {
                 journalText.text = editedJournalPlaceholderText

@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,6 +43,9 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entry-1" translatesAutoresizingMaskIntoConstraints="NO" id="FGj-vW-iBQ">
+                        <rect key="frame" x="15" y="112" width="265" height="373"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor amet sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haj-wJ-J54">
                         <rect key="frame" x="25" y="65" width="245" height="17"/>
                         <constraints>
@@ -53,50 +55,53 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ornament-3" translatesAutoresizingMaskIntoConstraints="NO" id="FGj-vW-iBQ">
-                        <rect key="frame" x="0.0" y="107" width="295" height="393"/>
-                    </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6b-a5-0Rb">
-                        <rect key="frame" x="252" y="20" width="23" height="23"/>
-                        <color key="tintColor" systemColor="labelColor"/>
-                        <state key="normal">
-                            <imageReference key="image" image="icon-ellipsis" symbolScale="large"/>
-                        </state>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eON-3P-Uzr">
+                        <rect key="frame" x="130" y="438" width="35" height="17"/>
+                        <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-3c-3x1">
+                        <rect key="frame" x="116" y="418" width="63" height="15"/>
+                        <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="systemYellowColor"/>
             <constraints>
                 <constraint firstItem="haj-wJ-J54" firstAttribute="top" secondItem="lyT-67-IDo" secondAttribute="bottom" id="1kD-N4-AWk"/>
-                <constraint firstItem="FGj-vW-iBQ" firstAttribute="top" secondItem="haj-wJ-J54" secondAttribute="bottom" constant="25" id="2d4-P1-U3l"/>
+                <constraint firstItem="FGj-vW-iBQ" firstAttribute="top" secondItem="haj-wJ-J54" secondAttribute="bottom" constant="30" id="2d4-P1-U3l"/>
                 <constraint firstItem="lyT-67-IDo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="35" id="3SK-Hm-Qyz"/>
+                <constraint firstItem="eON-3P-Uzr" firstAttribute="top" secondItem="8dF-3c-3x1" secondAttribute="bottom" constant="5" id="4nC-Vj-mI2"/>
                 <constraint firstItem="eGq-hV-taL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="CWV-by-E6J"/>
+                <constraint firstItem="FGj-vW-iBQ" firstAttribute="bottom" secondItem="eON-3P-Uzr" secondAttribute="bottom" constant="30" id="DGW-q3-U3B"/>
+                <constraint firstItem="8dF-3c-3x1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="FXA-tR-bTs"/>
                 <constraint firstItem="haj-wJ-J54" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="I0R-cn-0go"/>
-                <constraint firstAttribute="trailing" secondItem="FGj-vW-iBQ" secondAttribute="trailing" id="Jyg-L8-1zf"/>
+                <constraint firstAttribute="trailing" secondItem="FGj-vW-iBQ" secondAttribute="trailing" constant="15" id="Jyg-L8-1zf"/>
                 <constraint firstAttribute="trailing" secondItem="haj-wJ-J54" secondAttribute="trailing" constant="25" id="Le6-kW-ygy"/>
-                <constraint firstItem="FGj-vW-iBQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QPj-xm-1zK"/>
-                <constraint firstAttribute="trailing" secondItem="T6b-a5-0Rb" secondAttribute="trailing" constant="20" id="VOW-Kh-9cw"/>
-                <constraint firstAttribute="bottom" secondItem="FGj-vW-iBQ" secondAttribute="bottom" id="ZBM-cT-Zke"/>
-                <constraint firstItem="T6b-a5-0Rb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="hm2-be-ESY"/>
+                <constraint firstItem="FGj-vW-iBQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="QPj-xm-1zK"/>
+                <constraint firstItem="eON-3P-Uzr" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Y9B-hv-Zhe"/>
+                <constraint firstAttribute="bottom" secondItem="FGj-vW-iBQ" secondAttribute="bottom" constant="15" id="ZBM-cT-Zke"/>
                 <constraint firstItem="lyT-67-IDo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="pcI-PW-p1s"/>
                 <constraint firstItem="eGq-hV-taL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="sPw-Mb-7xm"/>
+                <constraint firstItem="8dF-3c-3x1" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="sTp-xc-Wgq"/>
             </constraints>
             <connections>
                 <outlet property="cellNumber" destination="eGq-hV-taL" id="9RQ-BQ-ayZ"/>
-                <outlet property="contextMenu" destination="T6b-a5-0Rb" id="2M1-Ej-npd"/>
                 <outlet property="journalDescription" destination="haj-wJ-J54" id="eLb-6e-RNj"/>
                 <outlet property="journalName" destination="lyT-67-IDo" id="SJK-Vi-dM5"/>
+                <outlet property="journalThumbnail" destination="FGj-vW-iBQ" id="XNP-bP-u6X"/>
+                <outlet property="lastUpdate" destination="eON-3P-Uzr" id="Re1-ta-bu7"/>
+                <outlet property="textLast" destination="8dF-3c-3x1" id="XOp-OO-2bU"/>
             </connections>
             <point key="canvasLocation" x="-16.666666666666668" y="116.85267857142857"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="icon-ellipsis" width="23" height="23"/>
-        <image name="ornament-3" width="295" height="375"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="entry-1" width="356" height="200"/>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

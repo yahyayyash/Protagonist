@@ -14,12 +14,16 @@ class JournalCellPlaceholder: UICollectionViewCell {
     @IBOutlet weak var cellNumber: UILabel!
     @IBOutlet weak var journalName: UILabel!
     @IBOutlet weak var journalDescription: UILabel!
-    @IBOutlet weak var contextMenu: UIButton!
+    @IBOutlet weak var journalThumbnail: UIImageView!
+    @IBOutlet weak var lastUpdate: UILabel!
+    @IBOutlet weak var textLast: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.layer.cornerRadius = 10
+        self.journalThumbnail.layer.masksToBounds = true
+        self.journalThumbnail.layer.cornerRadius = 10
     }
 
 }

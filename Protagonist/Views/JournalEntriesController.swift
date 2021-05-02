@@ -18,11 +18,22 @@ class JournalEntriesController: UIViewController {
     var selectedContext: IndexPath?
     var entryList: [JournalEntry]?
     
-    var gradient : CAGradientLayer?
+    var gradientTop : CAGradientLayer?
         let gradientView : UIView = {
             let view = UIView()
             return view
         }()
+    
+    let gradientBottom: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            UIColor(red: 1, green: 1, blue: 1, alpha: 0).cgColor,
+            UIColor.white.cgColor
+        ]
+        gradient.locations = [0, 1]
+        return gradient
+    }()
     
     @IBOutlet weak var journalTable: UITableView!
     @IBOutlet weak var bottomGradient: UIView!
@@ -34,6 +45,7 @@ class JournalEntriesController: UIViewController {
         
         setupClearNavbar()
         setupGradient()
+        interfaceUpdate()
         
         journalTable.rowHeight = UITableView.automaticDimension
         journalTable.estimatedRowHeight = 250
@@ -114,7 +126,8 @@ class JournalEntriesController: UIViewController {
         let customImage = UIImage(systemName: "arrow.backward")
         let fontBig = UIFont(name:"Product Sans Bold", size:36)!
         let fontSmall = UIFont(name: "Product Sans Bold", size: 17)!
-        
+        journalSubtitle.layer.masksToBounds = true
+        journalSubtitle.layer.cornerRadius = 10
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: menuItems())
         
         self.navigationController?.navigationBar.barTintColor = .clear
@@ -123,19 +136,8 @@ class JournalEntriesController: UIViewController {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.font: fontBig]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: fontSmall]
         
-        let gradient: CAGradientLayer = {
-            let gradient = CAGradientLayer()
-            gradient.type = .axial
-            gradient.colors = [
-                UIColor(red: 1, green: 1, blue: 1, alpha: 0).cgColor,
-                UIColor.white.cgColor
-            ]
-            gradient.locations = [0, 1]
-            return gradient
-        }()
-        
-        gradient.frame = bottomGradient.bounds
-        bottomGradient.layer.addSublayer(gradient)
+        gradientBottom.frame = bottomGradient.bounds
+        bottomGradient.layer.addSublayer(gradientBottom)
         
         buttonLabel.backgroundColor = .systemYellow
         buttonLabel.layer.cornerRadius = 10
@@ -184,16 +186,16 @@ class JournalEntriesController: UIViewController {
     }
     
     func setupGradient() {
-            let height : CGFloat = 150 // Height of the nav bar
+            let height : CGFloat = 125 // Height of the nav bar
         let color = UIColor.white.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
             let clear = UIColor.white.withAlphaComponent(0.0).cgColor
-            gradient = setupGradient(height: height, topColor: color,bottomColor: clear)
+            gradientTop = setupGradient(height: height, topColor: color,bottomColor: clear)
             view.addSubview(gradientView)
             NSLayoutConstraint.activate([
                 gradientView.topAnchor.constraint(equalTo: view.topAnchor),
                 gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
             ])
-            gradientView.layer.insertSublayer(gradient!, at: 0)
+            gradientView.layer.insertSublayer(gradientTop!, at: 0)
         }
 }
 
@@ -310,19 +312,16 @@ extension JournalEntriesController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         guard
-            // 1
+
             let identifier = configuration.identifier as? Array<Int>,
             var index: Int? = identifier[0],
             var section: Int? = identifier[1],
-            // 2
+            
             let cell = tableView.cellForRow(at: IndexPath(row: index!, section: section!))
                 as? EntryCell
         else {
             return nil
         }
-        
-        print(configuration.identifier)
-        // 3
         return UITargetedPreview(view: cell.viewContainer)
     }
 }
