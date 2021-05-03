@@ -153,8 +153,8 @@ class EditorController: UIViewController {
     
     func selectedIsNil(){
         self.title = "New Entry"
+        print("New Entry")
         self.journalSubtitle.text = selected?.journals?.subtitle
-        print(selected?.journals?.subtitle)
         
         playButton.isUserInteractionEnabled = false
         playButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)

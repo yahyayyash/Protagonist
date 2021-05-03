@@ -19,10 +19,10 @@ class JournalEntriesController: UIViewController {
     var entryList: [JournalEntry]?
     
     var gradientTop : CAGradientLayer?
-        let gradientView : UIView = {
-            let view = UIView()
-            return view
-        }()
+    let gradientView : UIView = {
+        let view = UIView()
+        return view
+    }()
     
     let gradientBottom: CAGradientLayer = {
         let gradient = CAGradientLayer()
@@ -39,6 +39,7 @@ class JournalEntriesController: UIViewController {
     @IBOutlet weak var bottomGradient: UIView!
     @IBOutlet weak var buttonLabel: CustomLabel!
     @IBOutlet weak var journalSubtitle: CustomLabel!
+    @IBOutlet weak var menuNavButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +66,7 @@ class JournalEntriesController: UIViewController {
         
     }
     
-// MARK: - Fetch Entries, sort then group them.
+    // MARK: - Fetch Entries, sort then group them.
     func loadEntries(){
         
         // Fetch entry list based on selected JournalData
@@ -116,7 +117,7 @@ class JournalEntriesController: UIViewController {
         
     }
     
-// MARK: - UI Related Function
+    // MARK: - UI Related Function
     
     func interfaceUpdate() {
         
@@ -186,17 +187,17 @@ class JournalEntriesController: UIViewController {
     }
     
     func setupGradient() {
-            let height : CGFloat = 125 // Height of the nav bar
+        let height : CGFloat = 125 // Height of the nav bar
         let color = UIColor.white.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
-            let clear = UIColor.white.withAlphaComponent(0.0).cgColor
-            gradientTop = setupGradient(height: height, topColor: color,bottomColor: clear)
-            view.addSubview(gradientView)
-            NSLayoutConstraint.activate([
-                gradientView.topAnchor.constraint(equalTo: view.topAnchor),
-                gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            ])
-            gradientView.layer.insertSublayer(gradientTop!, at: 0)
-        }
+        let clear = UIColor.white.withAlphaComponent(0.0).cgColor
+        gradientTop = setupGradient(height: height, topColor: color,bottomColor: clear)
+        view.addSubview(gradientView)
+        NSLayoutConstraint.activate([
+            gradientView.topAnchor.constraint(equalTo: view.topAnchor),
+            gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        ])
+        gradientView.layer.insertSublayer(gradientTop!, at: 0)
+    }
 }
 
 
@@ -312,17 +313,15 @@ extension JournalEntriesController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         guard
-
-            let identifier = configuration.identifier as? Array<Int>,
-            var index: Int? = identifier[0],
-            var section: Int? = identifier[1],
-            
-            let cell = tableView.cellForRow(at: IndexPath(row: index!, section: section!))
-                as? EntryCell
+            fetchController.fetchedObjects?.isEmpty == false
         else {
             return nil
         }
-        return UITargetedPreview(view: cell.viewContainer)
+        let identifier = configuration.identifier as? Array<Int>
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: identifier![0], section: identifier![1]))
+            as? EntryCell
+        return UITargetedPreview(view: cell!.viewContainer)
     }
 }
 
@@ -351,12 +350,12 @@ extension UIViewController {
     }
     
     func setupGradient(height: CGFloat, topColor: CGColor, bottomColor: CGColor) ->  CAGradientLayer {
-         let gradient: CAGradientLayer = CAGradientLayer()
-         gradient.colors = [topColor,bottomColor]
-         gradient.locations = [0.0 , 1.0]
-         gradient.startPoint = CGPoint(x: 0.0, y: 0.25)
-         gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
-         gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: height)
-         return gradient
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [topColor,bottomColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.25)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: height)
+        return gradient
     }
 }

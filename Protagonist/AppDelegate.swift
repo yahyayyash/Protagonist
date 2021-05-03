@@ -14,11 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let dataHelper = DatabaseHelper(context: self.persistentContainer.viewContext)
-        dataHelper.seedDataStore()
+        let loadData = 0
+        
+        if loadData == 0, UserDefaults.standard.object(forKey: "loadData") == nil {
+            dataHelper.seedDataStore()
+            UserDefaults.standard.setValue(1, forKey: "loadData")
+        }
+        
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+    // MARK: - UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
@@ -78,4 +84,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6O-K0-sH5">
-                        <rect key="frame" x="0.0" y="15" width="55" height="53"/>
+                        <rect key="frame" x="0.0" y="5" width="55" height="53"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="53" id="Urx-Gc-ICr"/>
@@ -34,7 +34,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNt-Ag-MtQ">
-                        <rect key="frame" x="20" y="10" width="35" height="29.5"/>
+                        <rect key="frame" x="20" y="0.0" width="35" height="29.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="40a-3g-lgj"/>
                         </constraints>
@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-AE-LF2" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                        <rect key="frame" x="20" y="39.5" width="35" height="15"/>
+                        <rect key="frame" x="20" y="29.5" width="35" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="1Yo-bi-AWO"/>
                         </constraints>
@@ -67,11 +67,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aNt-Ag-MtQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="9uJ-Sg-V8v"/>
+                    <constraint firstItem="aNt-Ag-MtQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9uJ-Sg-V8v"/>
                     <constraint firstItem="aNt-Ag-MtQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Az8-oC-HUw"/>
                     <constraint firstItem="IdN-AE-LF2" firstAttribute="top" secondItem="aNt-Ag-MtQ" secondAttribute="bottom" id="J45-Jt-qWV"/>
+                    <constraint firstItem="a6O-K0-sH5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="JbL-CB-39i"/>
                     <constraint firstItem="a6O-K0-sH5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="OU3-xe-zvb"/>
-                    <constraint firstItem="a6O-K0-sH5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="kfV-5v-0TC"/>
                     <constraint firstItem="IdN-AE-LF2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="lF4-R1-nnd"/>
                     <constraint firstItem="IdN-AE-LF2" firstAttribute="top" secondItem="aNt-Ag-MtQ" secondAttribute="bottom" id="wtL-jr-Sr2"/>
                 </constraints>
@@ -87,7 +87,7 @@
     </objects>
     <designables>
         <designable name="IdN-AE-LF2">
-            <size key="intrinsicContentSize" width="19" height="15"/>
+            <size key="intrinsicContentSize" width="19" height="28"/>
         </designable>
     </designables>
     <resources>
