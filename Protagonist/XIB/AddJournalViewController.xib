@@ -85,7 +85,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6f-o1-weE">
                             <rect key="frame" x="136.5" y="165" width="22" height="15"/>
                             <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="blackDynamic"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Journal Name" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lj9-pk-67P">
@@ -93,13 +93,14 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="T46-BD-cnV"/>
                             </constraints>
+                            <color key="textColor" name="blackDynamic"/>
                             <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-Ts-JDP">
                             <rect key="frame" x="127.5" y="245" width="40" height="15"/>
                             <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" name="blackDynamic"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Journal Description" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jub-1L-jIY">
@@ -107,6 +108,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="6B1-n5-CES"/>
                             </constraints>
+                            <color key="textColor" name="blackDynamic"/>
                             <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -153,7 +155,10 @@
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="ornament-2" width="125" height="125"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.36470588235294116" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="blackDynamic">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

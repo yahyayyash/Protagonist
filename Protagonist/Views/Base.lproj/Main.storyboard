@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,14 +43,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-Ds-Fvh">
                                 <rect key="frame" x="30" y="128" width="354" height="29.5"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="blackDynamic"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yahya!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRb-sP-qdq" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
                                 <rect key="frame" x="30" y="157.5" width="107.5" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="blackDynamic"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="underline">
@@ -81,7 +82,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Journal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GT-US-Dbd">
                                 <rect key="frame" x="176" y="827" width="62.5" height="15"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="blackDynamic"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-hg-K2o">
@@ -205,7 +206,7 @@
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="14"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Continue  ">
-                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <color key="titleColor" name="blackStatic"/>
                                     <imageReference key="image" image="arrow.right" catalog="system" symbolScale="small"/>
                                 </state>
                                 <connections>
@@ -215,7 +216,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What should I call you?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8C-CL-HIq">
                                 <rect key="frame" x="148" y="364" width="118" height="15"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="blackStatic"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Name" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ont-6V-a9U">
@@ -224,6 +225,7 @@
                                     <constraint firstAttribute="height" constant="35" id="2SD-7x-BY3"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="ALH-KO-rJY"/>
                                 </constraints>
+                                <color key="textColor" name="blackStatic"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -242,7 +244,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
                                 <state key="normal" title="Skip this step">
-                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <color key="titleColor" name="blackStatic"/>
                                 </state>
                                 <connections>
                                     <action selector="continueBoard:" destination="YAf-Mp-dye" eventType="touchUpInside" id="K5b-a2-Lj6"/>
@@ -299,7 +301,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
                                 <state key="normal" title="Skip this step">
-                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <color key="titleColor" name="blackStatic"/>
                                 </state>
                                 <connections>
                                     <action selector="continueBoard:" destination="xhN-mU-LKO" eventType="touchUpInside" id="3W5-Zx-AIQ"/>
@@ -317,7 +319,7 @@
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 <state key="normal" title="Continue  ">
-                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <color key="titleColor" name="blackStatic"/>
                                     <imageReference key="image" image="arrow.right" catalog="system" symbolScale="small"/>
                                 </state>
                                 <connections>
@@ -427,7 +429,7 @@
                                 <rect key="frame" x="193" y="83" width="28" height="15"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="blackStatic"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
@@ -484,7 +486,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Entry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yga-Hh-Dh3" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
                                 <rect key="frame" x="181" y="827" width="52" height="15"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="blackStatic"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
@@ -560,7 +562,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="QJ6-SC-wxo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="blackDynamic"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="35" translatesAutoresizingMaskIntoConstraints="NO" id="yfn-70-09G" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
@@ -569,7 +571,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="CTJ-HF-7mA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="blackDynamic"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
@@ -650,7 +652,7 @@
                                     <constraint firstAttribute="height" constant="21" id="Mn8-g2-A6M"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="blackStatic"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
@@ -751,6 +753,12 @@
         <image name="male-full" width="375" height="731"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="play.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="blackDynamic">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="blackStatic">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

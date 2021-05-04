@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +35,7 @@
                             <constraint firstAttribute="height" constant="17" id="FPM-eq-y7D"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" name="blackStatic"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyT-67-IDo">
                         <rect key="frame" x="15" y="30" width="265" height="30"/>
@@ -42,7 +43,7 @@
                             <constraint firstAttribute="height" constant="30" id="zKO-8h-6NR"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" name="blackStatic"/>
                     </label>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgI-Fb-cZf">
                         <rect key="frame" x="15" y="107" width="265" height="378"/>
@@ -79,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="whiteDynamic"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MzU-BO-faW" secondAttribute="trailing" constant="-20" id="0bk-bP-9Ac"/>
                             <constraint firstItem="MzU-BO-faW" firstAttribute="leading" secondItem="mgI-Fb-cZf" secondAttribute="leading" constant="-20" id="5V8-tJ-nDi"/>
@@ -137,6 +138,12 @@
     <resources>
         <image name="bookmark" width="33.5" height="45"/>
         <image name="both-colored" width="265" height="378"/>
+        <namedColor name="blackStatic">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="whiteDynamic">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -99,7 +99,7 @@ class ViewController: UIViewController {
         if (journalList?.count ?? 0) > 0{
             backgroundImage.isHidden = true
             avatarImage.isHidden = false
-            buttonLabel.textColor = .black
+            buttonLabel.textColor = UIColor(named: "blackDynamic")
         } else {
             backgroundImage.isHidden = false
             avatarImage.isHidden = true

@@ -151,8 +151,8 @@ class EditorController: UIViewController {
     
     func setupGradient() {
             let height : CGFloat = 125 // Height of the nav bar
-        let color = UIColor.white.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
-            let clear = UIColor.white.withAlphaComponent(0.0).cgColor
+        let color = UIColor(named: "whiteDynamic")!.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
+            let clear = UIColor(named: "whiteDynamic")!.withAlphaComponent(0.0).cgColor
             gradient = setupGradient(height: height, topColor: color,bottomColor: clear)
             view.addSubview(gradientView)
             NSLayoutConstraint.activate([
@@ -273,7 +273,7 @@ class EditorController: UIViewController {
             videoThumbnail.image = UIImage(named: "")
         }
         journalText.isEditable = false
-        textPlaceholder.layer.borderColor = UIColor(red: 34/255, green: 4/255, blue: 4/255, alpha: 0.05).cgColor
+        textPlaceholder.layer.borderColor = UIColor(named: "blackDynamic")?.withAlphaComponent(0.05).cgColor
         self.isEditing = false
         updateUI()
     }
@@ -288,9 +288,9 @@ extension EditorController: UITextViewDelegate {
             journalText.isEditable = true
             self.isEditing = true
             playButton.isUserInteractionEnabled = true
-            textPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
+            textPlaceholder.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
             mediaPlaceholder.layer.borderWidth = 1.0
-            mediaPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
+            mediaPlaceholder.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
             
             if journalText.text == journalPlaceholderText {
                 journalText.text = editedJournalPlaceholderText
@@ -324,7 +324,7 @@ extension EditorController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if journalText.textColor == .lightGray {
             journalText.text = nil
-            journalText.textColor = .black
+            journalText.textColor = UIColor(named: "blackDynamic")
         }
         self.updateViewConstraints()
     }

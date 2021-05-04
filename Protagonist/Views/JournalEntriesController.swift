@@ -28,8 +28,8 @@ class JournalEntriesController: UIViewController {
         let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.colors = [
-            UIColor(red: 1, green: 1, blue: 1, alpha: 0).cgColor,
-            UIColor.white.cgColor
+            UIColor(named: "whiteDynamic")?.withAlphaComponent(0.0).cgColor as Any,
+            UIColor(named: "whiteDynamic")?.cgColor as Any
         ]
         gradient.locations = [0, 1]
         return gradient
@@ -208,8 +208,8 @@ class JournalEntriesController: UIViewController {
     
     func setupGradient() {
         let height : CGFloat = 125 // Height of the nav bar
-        let color = UIColor.white.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
-        let clear = UIColor.white.withAlphaComponent(0.0).cgColor
+        let color = (UIColor(named: "whiteDynamic") ?? UIColor.white).withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
+        let clear = (UIColor(named: "whiteDynamic") ?? UIColor.white).withAlphaComponent(0.0).cgColor
         gradientTop = setupGradient(height: height, topColor: color,bottomColor: clear)
         view.addSubview(gradientView)
         NSLayoutConstraint.activate([
