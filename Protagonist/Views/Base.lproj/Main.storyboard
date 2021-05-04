@@ -37,7 +37,7 @@
                                 <cells/>
                             </collectionView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-full" translatesAutoresizingMaskIntoConstraints="NO" id="Wym-tX-hfP">
-                                <rect key="frame" x="0.0" y="128" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="165" width="414" height="731"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-Ds-Fvh">
                                 <rect key="frame" x="30" y="128" width="354" height="29.5"/>
@@ -118,7 +118,7 @@
                             <constraint firstItem="mH5-hg-K2o" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7NZ-qy-Grs"/>
                             <constraint firstItem="DRb-sP-qdq" firstAttribute="top" secondItem="xty-Ds-Fvh" secondAttribute="bottom" id="8EA-DF-5jt"/>
                             <constraint firstItem="7GT-US-Dbd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CdE-MZ-ScT"/>
-                            <constraint firstItem="Wym-tX-hfP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="S8P-dD-ySw"/>
+                            <constraint firstItem="Wym-tX-hfP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="S8P-dD-ySw"/>
                             <constraint firstItem="1M8-5A-Iun" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="XmA-qc-rbp"/>
                             <constraint firstItem="Wym-tX-hfP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aGL-HG-7CY"/>
                             <constraint firstItem="xty-Ds-Fvh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="d0c-xc-bmE"/>
@@ -382,6 +382,7 @@
                             <constraint firstItem="xNZ-VE-EPC" firstAttribute="bottom" secondItem="cJ9-UE-xfn" secondAttribute="bottom" constant="100" id="UKo-6M-GVD"/>
                             <constraint firstItem="fm6-X7-Yzu" firstAttribute="trailing" secondItem="xNZ-VE-EPC" secondAttribute="trailing" id="WXJ-8H-XMe"/>
                             <constraint firstItem="I1H-Jf-q6R" firstAttribute="top" secondItem="fm6-X7-Yzu" secondAttribute="bottom" constant="50" id="Wzm-ej-ZY3"/>
+                            <constraint firstItem="fm6-X7-Yzu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LcD-Cc-Xfx" secondAttribute="bottom" constant="30" id="fAa-8j-jCx"/>
                             <constraint firstItem="LcD-Cc-Xfx" firstAttribute="top" secondItem="xNZ-VE-EPC" secondAttribute="top" constant="50" id="jdX-6H-LhB"/>
                         </constraints>
                     </view>
@@ -612,7 +613,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstItem="hU5-Yo-ZjU" firstAttribute="top" secondItem="w5O-BD-sNy" secondAttribute="top" id="FBA-Rj-Sf2"/>
                                     <constraint firstAttribute="trailing" secondItem="hU5-Yo-ZjU" secondAttribute="trailing" id="H3B-PJ-fDk"/>
@@ -735,7 +736,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="nTo-Hm-KKT"/>
         <segue reference="NeZ-P2-2sZ"/>
-        <segue reference="NFB-9X-24m"/>
+        <segue reference="shi-Yw-cay"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Blob" width="157" height="168"/>
@@ -753,11 +754,11 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
