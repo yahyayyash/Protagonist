@@ -34,6 +34,8 @@
 		908B34A8263A678E002A6881 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B34A6263A678E002A6881 /* EntryCell.swift */; };
 		908B34A9263A678E002A6881 /* EntryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908B34A7263A678E002A6881 /* EntryCell.xib */; };
 		908B34D0263A72CB002A6881 /* JournalEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B34CF263A72CB002A6881 /* JournalEntriesController.swift */; };
+		908E2D062640AD7B009EF013 /* BoardingOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E2D052640AD7B009EF013 /* BoardingOneController.swift */; };
+		908E2D082640B4ED009EF013 /* BoardingTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908E2D072640B4ED009EF013 /* BoardingTwoController.swift */; };
 		9099F512263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */; };
 		9099F513263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */; };
 		9099F514263D74B40099A3F3 /* JournalData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */; };
@@ -73,6 +75,8 @@
 		908B34A6263A678E002A6881 /* EntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		908B34A7263A678E002A6881 /* EntryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryCell.xib; sourceTree = "<group>"; };
 		908B34CF263A72CB002A6881 /* JournalEntriesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntriesController.swift; sourceTree = "<group>"; };
+		908E2D052640AD7B009EF013 /* BoardingOneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingOneController.swift; sourceTree = "<group>"; };
+		908E2D072640B4ED009EF013 /* BoardingTwoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingTwoController.swift; sourceTree = "<group>"; };
 		9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9099F50F263D74B40099A3F3 /* JournalEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalData+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				908B34612639954C002A6881 /* ViewController.swift */,
 				908B34CF263A72CB002A6881 /* JournalEntriesController.swift */,
 				900A9620263AFC7A000A095D /* EditorController.swift */,
+				908E2D052640AD7B009EF013 /* BoardingOneController.swift */,
+				908E2D072640B4ED009EF013 /* BoardingTwoController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				9034C387263C6E6300D4F00C /* VideoHelper.swift in Sources */,
 				908B34622639954C002A6881 /* ViewController.swift in Sources */,
 				9034C37F263C316800D4F00C /* GenericButton.swift in Sources */,
+				908E2D062640AD7B009EF013 /* BoardingOneController.swift in Sources */,
 				9001776D263BA2F0004E781B /* SubtitleCell.swift in Sources */,
 				9099F515263D74B40099A3F3 /* JournalData+CoreDataProperties.swift in Sources */,
 				900A961F263AD7AC000A095D /* CustomLabel.swift in Sources */,
@@ -295,6 +302,7 @@
 				9034C385263C6A8700D4F00C /* RecordVideoController.swift in Sources */,
 				900A9621263AFC7A000A095D /* EditorController.swift in Sources */,
 				908B34D0263A72CB002A6881 /* JournalEntriesController.swift in Sources */,
+				908E2D082640B4ED009EF013 /* BoardingTwoController.swift in Sources */,
 				908B345E2639954C002A6881 /* AppDelegate.swift in Sources */,
 				908B34682639954C002A6881 /* Protagonist.xcdatamodeld in Sources */,
 				9034C382263C4FF600D4F00C /* AddJournalViewController.swift in Sources */,
@@ -453,7 +461,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.yahya.Protagonist;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yahya.Protagonist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,7 +481,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.yahya.Protagonist;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yahya.Protagonist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

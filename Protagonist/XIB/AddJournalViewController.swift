@@ -15,6 +15,7 @@ class AddJournalViewController: UIViewController {
     var sourceView = ""
     var sourceJournal: JournalData?
     var journalEntriesController: JournalEntriesController?
+    var selectedView: UIViewController?
     
     @IBOutlet weak var tapView: UIVisualEffectView!
     @IBOutlet weak var popupModal: UIView!
@@ -38,6 +39,8 @@ class AddJournalViewController: UIViewController {
         
         createButton.semanticContentAttribute = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         
+        journalName.addDoneButtonOnKeyboard()
+        journalDescription.addDoneButtonOnKeyboard()
         journalName.addBottomBorder()
         journalDescription.addBottomBorder()
     }
@@ -109,9 +112,15 @@ class AddJournalViewController: UIViewController {
             catch {
                 
             }
-            weak var pvc = self.presentingViewController?.children[0]
+            
+            let view = selectedView as? ViewController
+            view?.backgroundImage.isHidden = true
+            view?.avatarImage.isHidden = false
+            view?.fetchJournal()
+            view?.journalCollection.reloadData()
+            
             self.dismiss(animated: true, completion: {
-                pvc?.performSegue(withIdentifier: "latestSegue", sender: nil)
+                view?.performSegue(withIdentifier: "latestSegue", sender: nil)
             })
             break
         case "editEntry":

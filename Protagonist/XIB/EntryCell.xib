@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ4-rM-1Jb">
-                        <rect key="frame" x="20" y="10" width="35" height="29.5"/>
+                        <rect key="frame" x="20" y="10" width="35" height="28"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="uEM-hz-k0K"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAe-k4-psV" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                        <rect key="frame" x="20" y="39.5" width="35" height="15"/>
+                        <rect key="frame" x="20" y="38" width="35" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="u4L-Gh-LcY"/>
                         </constraints>
@@ -140,7 +140,7 @@
     </objects>
     <designables>
         <designable name="lAe-k4-psV">
-            <size key="intrinsicContentSize" width="19" height="15"/>
+            <size key="intrinsicContentSize" width="19.5" height="14"/>
         </designable>
     </designables>
     <resources>

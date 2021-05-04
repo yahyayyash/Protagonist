@@ -16,9 +16,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var journalCollection: UICollectionView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var addJournal: UIButton!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var buttonLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let gender = UserDefaults.standard.value(forKey: "Gender")
+        avatarImage.image = UIImage(named: "\(gender ?? "male")-avatar")
+        backgroundImage.image = UIImage(named: "\(gender ?? "male")-full")
+        let user = UserDefaults.standard.value(forKey: "Username")
+        userName.text = user as? String
         
         let journalCell = UINib(nibName: JournalCell.identifier, bundle: nil)
         let journalPlaceholder = UINib(nibName: JournalCellPlaceholder.identifier, bundle: nil)
@@ -29,13 +38,13 @@ class ViewController: UIViewController {
         journalCollection.delegate = self
         journalCollection.dataSource = self
         
-        self.fetchJournal()
     }
     
     @IBAction func segueModal(_ sender: Any) {
         let modalVC = AddJournalViewController()
         modalVC.modalPresentationStyle = .overCurrentContext
         modalVC.sourceView = "createEntry"
+        modalVC.selectedView = self
         present(modalVC, animated: true, completion: nil)
     }
     
@@ -60,6 +69,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.fetchJournal()
+        self.checkJournalList()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,6 +94,19 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+    func checkJournalList() {
+        if (journalList?.count ?? 0) > 0{
+            backgroundImage.isHidden = true
+            avatarImage.isHidden = false
+            buttonLabel.textColor = .black
+        } else {
+            backgroundImage.isHidden = false
+            avatarImage.isHidden = true
+            buttonLabel.textColor = .white
+        }
+    }
+
 }
 
 extension ViewController: UICollectionViewDelegate {
@@ -108,12 +131,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             let lastEntry = currentJournal?.entries?.lastObject as? JournalEntry
             
             if lastEntry?.thumbnail != nil {
+                cell.journalThumbnail.isHidden = false
                 cell.journalThumbnail.image = UIImage(data: (lastEntry?.thumbnail)!)
                 cell.lastUpdate.text = lastEntry?.isoDate
                 cell.lastUpdate.isHidden = false
                 cell.textLast.isHidden = false
             } else {
-                cell.journalThumbnail.image = UIImage(named: "")
+                cell.journalThumbnail.image = UIImage(named: "video-placeholder")
+                cell.journalThumbnail.isHidden = true
                 cell.lastUpdate.isHidden = true
                 cell.textLast.isHidden = true
             }
@@ -171,4 +196,3 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         return CGPoint.zero
     }
 }
-

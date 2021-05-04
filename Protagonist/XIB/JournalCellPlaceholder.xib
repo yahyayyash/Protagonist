@@ -97,7 +97,7 @@
                 <outlet property="lastUpdate" destination="eON-3P-Uzr" id="Re1-ta-bu7"/>
                 <outlet property="textLast" destination="8dF-3c-3x1" id="XOp-OO-2bU"/>
             </connections>
-            <point key="canvasLocation" x="-16.666666666666668" y="116.85267857142857"/>
+            <point key="canvasLocation" x="-16.666666666666668" y="116.51785714285714"/>
         </collectionViewCell>
     </objects>
     <resources>

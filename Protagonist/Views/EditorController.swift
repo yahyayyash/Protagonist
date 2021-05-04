@@ -41,6 +41,8 @@ class EditorController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         videoUrlHandler = selected?.video
         updateUI()
         if (isEditRightAway ?? false) {
@@ -77,7 +79,16 @@ class EditorController: UIViewController {
             let player = AVPlayer(url: videoUrlHandler!)
             let vcPlayer = AVPlayerViewController()
             vcPlayer.player = player
-            self.present(vcPlayer, animated: true, completion: nil)
+            
+            // Auto Play & Loop Video
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { (_) in
+                        player.seek(to: CMTime.zero)
+                        player.play()
+            }
+            
+            self.present(vcPlayer, animated: true, completion: {
+                vcPlayer.player?.play()
+            })
         }
         if selected?.video == nil {
             let alert = UIAlertController(
@@ -153,8 +164,7 @@ class EditorController: UIViewController {
     
     func selectedIsNil(){
         self.title = "New Entry"
-        print("New Entry")
-        self.journalSubtitle.text = selected?.journals?.subtitle
+        self.journalSubtitle.text = selectedGroup?.subtitle
         
         playButton.isUserInteractionEnabled = false
         playButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)

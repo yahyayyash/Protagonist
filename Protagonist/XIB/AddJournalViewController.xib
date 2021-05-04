@@ -83,13 +83,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6f-o1-weE">
-                            <rect key="frame" x="136.5" y="167" width="22" height="14"/>
+                            <rect key="frame" x="136.5" y="165" width="22" height="15"/>
                             <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Journal Name" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lj9-pk-67P">
-                            <rect key="frame" x="40" y="186" width="215" height="35"/>
+                            <rect key="frame" x="40" y="185" width="215" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="T46-BD-cnV"/>
                             </constraints>
@@ -97,7 +97,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-Ts-JDP">
-                            <rect key="frame" x="127" y="246" width="41" height="14"/>
+                            <rect key="frame" x="127.5" y="245" width="40" height="15"/>
                             <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

@@ -39,10 +39,13 @@ class JournalEntriesController: UIViewController {
     @IBOutlet weak var bottomGradient: UIView!
     @IBOutlet weak var buttonLabel: CustomLabel!
     @IBOutlet weak var journalSubtitle: CustomLabel!
-    @IBOutlet weak var menuNavButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: self.journalTable.frame.width, height: 125))
+        footerView.backgroundColor = .clear
+        self.journalTable.tableFooterView = footerView
         
         setupClearNavbar()
         setupGradient()
@@ -223,13 +226,16 @@ extension JournalEntriesController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let frc = fetchController {
-            return frc.sections!.count
+        if (fetchController.fetchedObjects?.count ?? 0) > 0 {
+            return fetchController.sections!.count
         }
-        return 1
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if fetchController.fetchedObjects?.count == 0 {
+            return 1
+        }
         return fetchController.sections?[section].numberOfObjects ?? 0
     }
     
@@ -242,7 +248,7 @@ extension JournalEntriesController: UITableViewDataSource {
             cell.videoThumbnail.image = UIImage(data: currentJournal.thumbnail!)
             cell.playButton.isHidden = false
         } else {
-            cell.videoThumbnail.image = UIImage(named: "")
+            cell.videoThumbnail.image = UIImage(named: "video-placeholder")
             cell.playButton.isHidden = true
         }
         
@@ -268,17 +274,25 @@ extension JournalEntriesController: UITableViewDataSource {
         return UIContextMenuConfiguration(
             identifier: identifier,
             previewProvider: nil) { _ in
-            // 3
+
             let playAction = UIAction(
                 title: "Play",
                 image: UIImage(systemName: "play.rectangle")) { _ in
                 let player = AVPlayer(url: self.fetchController.object(at: indexPath).video!)
                 let vcPlayer = AVPlayerViewController()
                 vcPlayer.player = player
-                self.present(vcPlayer, animated: true, completion: nil)
+                
+                
+                // Auto Play & Loop Video
+                NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { (_) in
+                            player.seek(to: CMTime.zero)
+                            player.play()
+                }
+                    
+                self.present(vcPlayer, animated: true, completion: {
+                                vcPlayer.player?.play()})
             }
                 
-                // 4
             let editAction = UIAction(
                 title: "Edit",
                 image: UIImage(systemName: "pencil")) { _ in
