@@ -35,7 +35,6 @@
                         </constraints>
                         <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="14"/>
                         <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Journal Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyT-67-IDo">
                         <rect key="frame" x="15" y="30" width="265" height="30"/>
@@ -44,7 +43,6 @@
                         </constraints>
                         <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="24"/>
                         <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
                     </label>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgI-Fb-cZf">
                         <rect key="frame" x="15" y="107" width="265" height="378"/>
