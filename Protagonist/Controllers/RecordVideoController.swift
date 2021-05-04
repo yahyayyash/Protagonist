@@ -71,12 +71,17 @@ extension EditorController: UIImagePickerControllerDelegate {
             break
         }
         
-        dismiss(animated: true) {
-            self.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-            self.videoUrlHandler = url
-            self.videoThumbnailHandler = self.thumbnailForVideoAtURL(url: url)
-            self.videoThumbnail.image = self.videoThumbnailHandler
-        }
+        self.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        self.videoUrlHandler = url
+        self.videoThumbnailHandler = self.thumbnailForVideoAtURL(url: url)
+        self.videoThumbnail.image = self.videoThumbnailHandler
+        
+//        dismiss(animated: true) {
+//            self.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+//            self.videoUrlHandler = url
+//            self.videoThumbnailHandler = self.thumbnailForVideoAtURL(url: url)
+//            self.videoThumbnail.image = self.videoThumbnailHandler
+//        }
     }
 }
 

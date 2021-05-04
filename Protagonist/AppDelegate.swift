@@ -13,12 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let dataHelper = DatabaseHelper(context: self.persistentContainer.viewContext)
-        
-        if UserDefaults.standard.object(forKey: "loadData") == nil {
-            dataHelper.seedDataStore()
-            UserDefaults.standard.setValue(1, forKey: "loadData")
-        }
+//c
         
         return true
     }

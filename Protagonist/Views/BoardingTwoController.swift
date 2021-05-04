@@ -28,12 +28,14 @@ class BoardingTwoController: UIViewController {
         continueButton.semanticContentAttribute = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         femaleImage.isUserInteractionEnabled = true
         maleImage.isUserInteractionEnabled = true
+        
+        bouncyPosition(blobImage)
     }
     
     @IBAction func didTapMale(_ sender: UITapGestureRecognizer) {
         selectedGender = "male"
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseInOut, animations: {
             self.femaleImage.alpha = 0.25
             self.maleImage.alpha = 1
             self.blobImage.layer.position = CGPoint(x: self.blobImage.frame.width / 2, y: self.viewContainer.frame.height / 2)
@@ -42,7 +44,7 @@ class BoardingTwoController: UIViewController {
     
     @IBAction func didTapFemale(_ sender: UITapGestureRecognizer) {
         selectedGender = "female"
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseInOut, animations: {
             self.femaleImage.alpha = 1
             self.maleImage.alpha = 0.25
             self.blobImage.layer.position = CGPoint(x: self.viewContainer.frame.width - self.blobImage.frame.width / 2, y: self.viewContainer.frame.height / 2)
@@ -54,10 +56,10 @@ class BoardingTwoController: UIViewController {
         UserDefaults.standard.setValue(selectedGender, forKey: "Gender")
     }
     
-    func bouncyScale(_ input: UIView){
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut, .repeat], animations: {
-            input.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+    func bouncyPosition(_ input: UIView){
+        let origin = input.layer.position.y
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut, .autoreverse, .repeat], animations: {
+            input.layer.position = CGPoint(x: 0, y: origin + 50)
         }, completion: nil)
     }
 }

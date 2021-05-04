@@ -88,7 +88,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="BF4-Us-ode" secondAttribute="bottom" id="54s-jt-1Yp"/>
                                     <constraint firstItem="BF4-Us-ode" firstAttribute="top" secondItem="nof-xG-1hn" secondAttribute="top" id="KBh-eC-qqh"/>
@@ -148,6 +148,9 @@
         <image name="video-placeholder" width="263" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

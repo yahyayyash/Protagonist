@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="JournalData" representedClassName="JournalData" syncable="YES">
+        <attribute name="isBookmarked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="JournalEntry" inverseName="journals" inverseEntity="JournalEntry"/>
@@ -13,7 +14,7 @@
         <relationship name="journals" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JournalData" inverseName="entries" inverseEntity="JournalData"/>
     </entity>
     <elements>
-        <element name="JournalData" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="JournalData" positionX="-63" positionY="-18" width="128" height="89"/>
         <element name="JournalEntry" positionX="-54" positionY="-9" width="128" height="104"/>
     </elements>
 </model>

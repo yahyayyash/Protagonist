@@ -16,7 +16,7 @@ class JournalEntriesController: UIViewController {
     
     var selected: JournalData?
     var selectedContext: IndexPath?
-    var entryList: [JournalEntry]?
+    var bookmarkMenu: UIBarButtonItem?
     
     var gradientTop : CAGradientLayer?
     let gradientView : UIView = {
@@ -39,6 +39,7 @@ class JournalEntriesController: UIViewController {
     @IBOutlet weak var bottomGradient: UIView!
     @IBOutlet weak var buttonLabel: CustomLabel!
     @IBOutlet weak var journalSubtitle: CustomLabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +87,11 @@ class JournalEntriesController: UIViewController {
         
         do {
             try fetchController.performFetch()
+            if fetchController.fetchedObjects?.count == 0 {
+                backgroundImage.isHidden = false
+            } else {
+                backgroundImage.isHidden = true
+            }
             journalTable.reloadData()
         } catch {
             
@@ -132,8 +138,19 @@ class JournalEntriesController: UIViewController {
         let fontSmall = UIFont(name: "Product Sans Bold", size: 17)!
         journalSubtitle.layer.masksToBounds = true
         journalSubtitle.layer.cornerRadius = 10
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: menuItems())
         
+        let menuItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: menuItems())
+        if (selected?.isBookmarked)! {
+            bookmarkMenu = UIBarButtonItem(image: UIImage(systemName: "bookmark.fill"), style: .plain, target: self, action: #selector(bookmarkJournal))
+        } else {
+            bookmarkMenu = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(bookmarkJournal))
+        }
+        
+        
+        navigationItem.rightBarButtonItems?.removeAll()
+        navigationItem.rightBarButtonItems?.append(menuItem)
+        navigationItem.rightBarButtonItems?.append(bookmarkMenu!)
+                
         self.navigationController?.navigationBar.barTintColor = .clear
         self.navigationController?.navigationBar.backIndicatorImage = customImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = customImage
@@ -201,6 +218,21 @@ class JournalEntriesController: UIViewController {
         ])
         gradientView.layer.insertSublayer(gradientTop!, at: 0)
     }
+    
+    @objc func bookmarkJournal() {
+        if (selected?.isBookmarked)! {
+            selected?.isBookmarked = false
+            bookmarkMenu?.image = UIImage(systemName: "bookmark")
+        } else {
+            selected?.isBookmarked = true
+            bookmarkMenu?.image = UIImage(systemName: "bookmark.fill")
+        }
+        do {
+            try self.context.save()
+        } catch {
+            
+        }
+    }
 }
 
 
@@ -211,8 +243,9 @@ extension JournalEntriesController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableView
 extension JournalEntriesController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = journalTable.dequeueReusableCell(withIdentifier: HeaderCell.identifier) as! HeaderCell
         
@@ -248,14 +281,14 @@ extension JournalEntriesController: UITableViewDataSource {
             cell.videoThumbnail.image = UIImage(data: currentJournal.thumbnail!)
             cell.playButton.isHidden = false
         } else {
-            cell.videoThumbnail.image = UIImage(named: "video-placeholder")
+            cell.videoThumbnail.isHidden = true
             cell.playButton.isHidden = true
+            cell.videoThumbnail.image = UIImage(named: "video-placeholder")
         }
         
         cell.textDescription.text = currentJournal.textDescription
         cell.dateLabel.text = customDateFormatter(dateInput: currentJournal.date ?? Date())[0]
         cell.monthLabel.text = customDateFormatter(dateInput: currentJournal.date ?? Date())[1]
-        
         cell.selectionStyle = .none
         cell.clipsToBounds = false
         cell.contentView.clipsToBounds = false

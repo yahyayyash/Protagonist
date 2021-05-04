@@ -28,9 +28,8 @@
 	<string>$(PRODUCT_NAME) access your library.</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Product Sans Bold Italic.ttf</string>
+		<string>The Last Story.ttf</string>
 		<string>Product Sans Bold.ttf</string>
-		<string>Product Sans Italic.ttf</string>
 		<string>Product Sans Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

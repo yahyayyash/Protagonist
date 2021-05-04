@@ -130,17 +130,27 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             let currentJournal = journalList?[indexPath.row]
             let lastEntry = currentJournal?.entries?.lastObject as? JournalEntry
             
+            // Check if there's thumbnail on the last object of current journal
             if lastEntry?.thumbnail != nil {
-                cell.journalThumbnail.isHidden = false
                 cell.journalThumbnail.image = UIImage(data: (lastEntry?.thumbnail)!)
                 cell.lastUpdate.text = lastEntry?.isoDate
                 cell.lastUpdate.isHidden = false
                 cell.textLast.isHidden = false
+                cell.gradientBottom.isHidden = false
+                cell.cellNumber.isHidden = false
             } else {
-                cell.journalThumbnail.image = UIImage(named: "video-placeholder")
-                cell.journalThumbnail.isHidden = true
+                cell.journalThumbnail.image = UIImage(named: "both-colored")
                 cell.lastUpdate.isHidden = true
                 cell.textLast.isHidden = true
+                cell.cellNumber.isHidden = true
+                cell.gradientBottom.isHidden = true
+            }
+            
+            // Check the journal bookmark state
+            if (currentJournal?.isBookmarked)! {
+                cell.bookmarkIcon.isHidden = false
+            } else {
+                cell.bookmarkIcon.isHidden = true
             }
             
             cell.cellNumber.text = "0\(indexPath.row + 1)"

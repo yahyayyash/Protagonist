@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YAf-Mp-dye">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zes-gQ-8aW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -25,8 +25,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UGK-pH-k2h">
+                                <rect key="frame" x="0.0" y="241.5" width="414" height="485.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="tzN-5n-0gd" customClass="CollectionViewFlowLayout" customModule="Protagonist" customModuleProvider="target">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-full" translatesAutoresizingMaskIntoConstraints="NO" id="Wym-tX-hfP">
+                                <rect key="frame" x="0.0" y="128" width="414" height="768"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-Ds-Fvh">
+                                <rect key="frame" x="30" y="128" width="354" height="29.5"/>
+                                <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yahya!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRb-sP-qdq" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
                                 <rect key="frame" x="30" y="157.5" width="107.5" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Bold" family="Product Sans" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,26 +78,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-Ds-Fvh">
-                                <rect key="frame" x="30" y="128" width="354" height="29.5"/>
-                                <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UGK-pH-k2h">
-                                <rect key="frame" x="0.0" y="221.5" width="414" height="525.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="tzN-5n-0gd" customClass="CollectionViewFlowLayout" customModule="Protagonist" customModuleProvider="target">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-full" translatesAutoresizingMaskIntoConstraints="NO" id="Wym-tX-hfP">
-                                <rect key="frame" x="0.0" y="128" width="414" height="768"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Journal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GT-US-Dbd">
                                 <rect key="frame" x="176" y="827" width="62.5" height="15"/>
                                 <fontDescription key="fontDescription" name="ProductSans-Regular" family="Product Sans" pointSize="12"/>
@@ -122,10 +123,10 @@
                             <constraint firstItem="Wym-tX-hfP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aGL-HG-7CY"/>
                             <constraint firstItem="xty-Ds-Fvh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="d0c-xc-bmE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UGK-pH-k2h" secondAttribute="trailing" id="eno-IQ-cro"/>
-                            <constraint firstItem="UGK-pH-k2h" firstAttribute="top" secondItem="DRb-sP-qdq" secondAttribute="bottom" constant="20" id="jDD-rn-o63"/>
+                            <constraint firstItem="UGK-pH-k2h" firstAttribute="top" secondItem="DRb-sP-qdq" secondAttribute="bottom" constant="40" id="jDD-rn-o63"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7GT-US-Dbd" secondAttribute="bottom" constant="20" id="jMD-kg-khw"/>
                             <constraint firstItem="UGK-pH-k2h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nTU-nQ-aeP"/>
-                            <constraint firstItem="mH5-hg-K2o" firstAttribute="top" secondItem="UGK-pH-k2h" secondAttribute="bottom" constant="20" id="s86-Lm-KUL"/>
+                            <constraint firstItem="mH5-hg-K2o" firstAttribute="top" secondItem="UGK-pH-k2h" secondAttribute="bottom" constant="40" id="s86-Lm-KUL"/>
                             <constraint firstItem="Wym-tX-hfP" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sjp-fi-PtP"/>
                             <constraint firstAttribute="bottom" secondItem="Wym-tX-hfP" secondAttribute="bottom" id="zcC-dD-sLh"/>
                         </constraints>
@@ -166,6 +167,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTR-Sl-neN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="101.78571428571428"/>
+        </scene>
+        <!--Selector View Controller-->
+        <scene sceneID="bqK-3a-mD7">
+            <objects>
+                <viewController id="zes-gQ-8aW" customClass="SelectorViewController" customModule="Protagonist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T7A-Pl-yaw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IUr-Og-6JK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <segue destination="YAf-Mp-dye" kind="presentation" identifier="toOnboarding" modalPresentationStyle="fullScreen" id="pB1-rn-zP0"/>
+                        <segue destination="Tp8-nv-abJ" kind="presentation" identifier="toMain" modalPresentationStyle="fullScreen" id="NFB-9X-24m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KaS-LM-jHL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1417" y="102"/>
         </scene>
         <!--Boarding One Controller-->
         <scene sceneID="2hu-xk-ogg">
@@ -244,6 +264,7 @@
                             <constraint firstItem="WsZ-7w-GR3" firstAttribute="bottom" secondItem="e3h-Lz-mh7" secondAttribute="bottom" constant="100" id="zja-6r-j1j"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jOH-u6-qyP"/>
                     <connections>
                         <outlet property="createButton" destination="Hql-n8-XtD" id="4oc-Tb-IS1"/>
                         <outlet property="skipButton" destination="e3h-Lz-mh7" id="G6Q-9l-8ij"/>
@@ -253,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bz-3a-8zu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-736" y="102"/>
+            <point key="canvasLocation" x="-522" y="-654"/>
         </scene>
         <!--Boarding Two Controller-->
         <scene sceneID="WCo-wS-HOg">
@@ -387,7 +408,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="173.91304347826087" y="101.78571428571428"/>
+            <point key="canvasLocation" x="388" y="-654"/>
         </scene>
         <!--Guitar Exercise-->
         <scene sceneID="r8C-e3-oSh">
@@ -430,8 +451,19 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-8A-8Xa">
                                 <rect key="frame" x="0.0" y="736" width="414" height="160"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="both-monochrome" translatesAutoresizingMaskIntoConstraints="NO" id="ctX-E8-rDZ">
+                                        <rect key="frame" x="0.0" y="-415.5" width="414" height="575.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="175" id="pWs-rE-Pe3"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ctX-E8-rDZ" secondAttribute="trailing" id="cli-sF-C4s"/>
+                                    <constraint firstItem="ctX-E8-rDZ" firstAttribute="leading" secondItem="bn9-8A-8Xa" secondAttribute="leading" id="snb-gd-5e1"/>
                                     <constraint firstAttribute="height" constant="160" id="xnB-p0-Rvu"/>
+                                    <constraint firstAttribute="bottom" secondItem="ctX-E8-rDZ" secondAttribute="bottom" id="zGg-VH-Cod"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgM-RJ-lvg">
@@ -497,6 +529,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundImage" destination="ctX-E8-rDZ" id="1Vu-QP-7Rl"/>
                         <outlet property="bottomGradient" destination="bn9-8A-8Xa" id="jve-me-bjQ"/>
                         <outlet property="buttonLabel" destination="yga-Hh-Dh3" id="jpF-sJ-5hk"/>
                         <outlet property="journalSubtitle" destination="yeF-V5-whm" id="v3M-C7-24G"/>
@@ -661,7 +694,7 @@
                             <constraint firstItem="yfn-70-09G" firstAttribute="leading" secondItem="0Ga-Bv-bYA" secondAttribute="leading" constant="20" id="xzL-Be-Fci"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Guitar Exercise" largeTitleDisplayMode="never" id="BVY-mc-cx7" customClass="CustomTitleController" customModule="Protagonist" customModuleProvider="target">
+                    <navigationItem key="navigationItem" title="Guitar Exercise" largeTitleDisplayMode="never" id="BVY-mc-cx7">
                         <barButtonItem key="rightBarButtonItem" image="pencil" catalog="system" id="ewV-Co-dmh"/>
                     </navigationItem>
                     <connections>
@@ -702,11 +735,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="nTo-Hm-KKT"/>
         <segue reference="NeZ-P2-2sZ"/>
+        <segue reference="NFB-9X-24m"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Blob" width="157" height="168"/>
         <image name="Protagonist" width="130" height="29"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="both-monochrome" width="414" height="575.5"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <image name="female" width="268" height="812"/>
         <image name="icon-plus" width="50" height="50"/>

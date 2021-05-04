@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdN-AE-LF2" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
-                        <rect key="frame" x="20" y="29.5" width="35" height="28"/>
+                        <rect key="frame" x="20" y="29.5" width="35" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="1Yo-bi-AWO"/>
                         </constraints>
@@ -87,7 +87,7 @@
     </objects>
     <designables>
         <designable name="IdN-AE-LF2">
-            <size key="intrinsicContentSize" width="19" height="28"/>
+            <size key="intrinsicContentSize" width="19" height="15"/>
         </designable>
     </designables>
     <resources>

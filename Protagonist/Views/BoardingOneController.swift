@@ -23,7 +23,7 @@ class BoardingOneController: UIViewController, UITextFieldDelegate {
         createButton.isEnabled = false
         createButton.alpha = 0.25
         
-        yourName.addBottomBorder()
+        yourName.addBottomBorder(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
         yourName.delegate = self
         yourName.addDoneButtonOnKeyboard()
     }
@@ -92,3 +92,4 @@ extension UITextField{
         self.resignFirstResponder()
     }
 }
+
