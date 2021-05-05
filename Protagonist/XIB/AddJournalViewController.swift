@@ -36,15 +36,13 @@ class AddJournalViewController: UIViewController {
             createButton.isEnabled = false
         }
         
-//        self.dismissKeyboard()
         popupModal.layer.cornerRadius = 10
-        
         createButton.semanticContentAttribute = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         
         journalName.addDoneButtonOnKeyboard()
         journalDescription.addDoneButtonOnKeyboard()
-        journalName.addBottomBorder(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
-        journalDescription.addBottomBorder(#colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1))
+        journalName.addBottomBorder(UIColor.ColorLibrary.blackDynamic.withAlphaComponent(0.25).cgColor)
+        journalDescription.addBottomBorder(UIColor.ColorLibrary.blackDynamic.withAlphaComponent(0.25).cgColor)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,47 +55,7 @@ class AddJournalViewController: UIViewController {
         default:
             break
         }
-        
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(EditorController.handleKeyboardDidShow(notification:)),
-//            name: UIResponder.keyboardDidShowNotification,
-//            object: nil
-//        )
-//
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(EditorController.handleKeybolardWillHide),
-//            name: UIResponder.keyboardWillHideNotification,
-//            object: nil
-//        )
     }
-    
-//    func dismissKeyboard() {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action:    #selector(dismissKeyboardTouchOutside))
-//        tap.cancelsTouchesInView = false
-//        self.view.addGestureRecognizer(tap)
-//    }
-//
-//    @objc private func dismissKeyboardTouchOutside() {
-//        self.view.endEditing(true)
-//    }
-//
-//    @objc func handleKeyboardDidShow(notification: NSNotification) {
-//        guard let keyboardRect = (notification
-//                                    .userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
-//                                    as? NSValue)?.cgRectValue else { return }
-//
-//
-//        UIView.animate(withDuration: 0.5, delay: 0, animations: {
-//
-//            self.popupModal.frame.origin.y = 500 - keyboardRect.height
-//        })
-//    }
-//
-//    @objc func handleKeybolardWillHide() {
-//        self.popupModal.frame.origin.y = popupOrigin
-//    }
     
     @IBAction func dismissPopup(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -123,6 +81,7 @@ class AddJournalViewController: UIViewController {
             view?.journalCollection.reloadData()
             
             self.dismiss(animated: true, completion: {
+                view?.cellLayoutRefresh()
                 view?.performSegue(withIdentifier: "latestSegue", sender: nil)
             })
             break

@@ -18,6 +18,7 @@
 		904D36E0264139A800FE252D /* The Last Story.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 904D36DF264139A800FE252D /* The Last Story.ttf */; };
 		904D36E62641519300FE252D /* JournalData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904D36E22641519300FE252D /* JournalData+CoreDataProperties.swift */; };
 		904D36E82641519300FE252D /* JournalEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904D36E42641519300FE252D /* JournalEntry+CoreDataProperties.swift */; };
+		904D36EC26421C0900FE252D /* ColorLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904D36EB26421C0900FE252D /* ColorLibrary.swift */; };
 		9059765D263E3CAB008CA001 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059765C263E3CAB008CA001 /* DatabaseHelper.swift */; };
 		908B345E2639954C002A6881 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B345D2639954C002A6881 /* AppDelegate.swift */; };
 		908B34602639954C002A6881 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908B345F2639954C002A6881 /* SceneDelegate.swift */; };
@@ -56,8 +57,9 @@
 		9034C384263C6A8700D4F00C /* RecordVideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVideoController.swift; sourceTree = "<group>"; };
 		9034C386263C6E6300D4F00C /* VideoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoHelper.swift; sourceTree = "<group>"; };
 		904D36DF264139A800FE252D /* The Last Story.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "The Last Story.ttf"; path = "../../../../../../Library/Fonts/The Last Story.ttf"; sourceTree = "<group>"; };
-		904D36E22641519300FE252D /* JournalData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "JournalData+CoreDataProperties.swift"; path = "../../JournalData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		904D36E42641519300FE252D /* JournalEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "JournalEntry+CoreDataProperties.swift"; path = "../../JournalEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		904D36E22641519300FE252D /* JournalData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		904D36E42641519300FE252D /* JournalEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JournalEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		904D36EB26421C0900FE252D /* ColorLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLibrary.swift; sourceTree = "<group>"; };
 		9059765C263E3CAB008CA001 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		908B345A2639954C002A6881 /* Protagonist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Protagonist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		908B345D2639954C002A6881 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		904D36ED2642249600FE252D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				904D36E22641519300FE252D /* JournalData+CoreDataProperties.swift */,
+				904D36E42641519300FE252D /* JournalEntry+CoreDataProperties.swift */,
+				9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */,
+				9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		908B34512639954C002A6881 = {
 			isa = PBXGroup;
 			children = (
@@ -136,14 +149,12 @@
 		908B3474263999D4002A6881 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				904D36ED2642249600FE252D /* CoreData */,
+				904D36EB26421C0900FE252D /* ColorLibrary.swift */,
 				9059765C263E3CAB008CA001 /* DatabaseHelper.swift */,
 				90D331AF263B0E4D00AC4913 /* RoundedCard.swift */,
 				900A961E263AD7AC000A095D /* CustomLabel.swift */,
 				9034C37E263C316800D4F00C /* GenericButton.swift */,
-				904D36E22641519300FE252D /* JournalData+CoreDataProperties.swift */,
-				904D36E42641519300FE252D /* JournalEntry+CoreDataProperties.swift */,
-				9099F50E263D74B40099A3F3 /* JournalEntry+CoreDataClass.swift */,
-				9099F510263D74B40099A3F3 /* JournalData+CoreDataClass.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,6 +320,7 @@
 				908B345E2639954C002A6881 /* AppDelegate.swift in Sources */,
 				908E2D0C2640DFC6009EF013 /* SelectorViewController.swift in Sources */,
 				908B34682639954C002A6881 /* Protagonist.xcdatamodeld in Sources */,
+				904D36EC26421C0900FE252D /* ColorLibrary.swift in Sources */,
 				9034C382263C4FF600D4F00C /* AddJournalViewController.swift in Sources */,
 				908B34602639954C002A6881 /* SceneDelegate.swift in Sources */,
 				9099F514263D74B40099A3F3 /* JournalData+CoreDataClass.swift in Sources */,

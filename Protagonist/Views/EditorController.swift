@@ -21,10 +21,10 @@ class EditorController: UIViewController {
     var isEditRightAway: Bool?
     
     var gradient : CAGradientLayer?
-        let gradientView : UIView = {
-            let view = UIView()
-            return view
-        }()
+    let gradientView : UIView = {
+        let view = UIView()
+        return view
+    }()
     
     @IBOutlet weak var videoThumbnail: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -82,8 +82,8 @@ class EditorController: UIViewController {
             
             // Auto Play & Loop Video
             NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { (_) in
-                        player.seek(to: CMTime.zero)
-                        player.play()
+                player.seek(to: CMTime.zero)
+                player.play()
             }
             
             self.present(vcPlayer, animated: true, completion: {
@@ -150,17 +150,17 @@ class EditorController: UIViewController {
     }
     
     func setupGradient() {
-            let height : CGFloat = 125 // Height of the nav bar
-        let color = UIColor(named: "whiteDynamic")!.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
-            let clear = UIColor(named: "whiteDynamic")!.withAlphaComponent(0.0).cgColor
-            gradient = setupGradient(height: height, topColor: color,bottomColor: clear)
-            view.addSubview(gradientView)
-            NSLayoutConstraint.activate([
-                gradientView.topAnchor.constraint(equalTo: view.topAnchor),
-                gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            ])
-            gradientView.layer.insertSublayer(gradient!, at: 0)
-        }
+        let height : CGFloat = 125 // Height of the nav bar
+        let color = UIColor.ColorLibrary.whiteDynamic.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
+        let clear = UIColor.ColorLibrary.whiteDynamic.withAlphaComponent(0.0).cgColor
+        gradient = setupGradient(height: height, topColor: color,bottomColor: clear)
+        view.addSubview(gradientView)
+        NSLayoutConstraint.activate([
+            gradientView.topAnchor.constraint(equalTo: view.topAnchor),
+            gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        ])
+        gradientView.layer.insertSublayer(gradient!, at: 0)
+    }
     
     func selectedIsNil(){
         self.title = "New Entry"
@@ -236,8 +236,8 @@ class EditorController: UIViewController {
                 catch {
                     
                 }
-            
-            // Update current entry
+                
+                // Update current entry
             } else {
                 selected?.textDescription = journalText.text
                 if selected?.video == nil {
@@ -273,7 +273,7 @@ class EditorController: UIViewController {
             videoThumbnail.image = UIImage(named: "")
         }
         journalText.isEditable = false
-        textPlaceholder.layer.borderColor = UIColor(named: "blackDynamic")?.withAlphaComponent(0.05).cgColor
+        textPlaceholder.layer.borderColor = UIColor.ColorLibrary.blackStatic.withAlphaComponent(0.05).cgColor
         self.isEditing = false
         updateUI()
     }
@@ -288,9 +288,9 @@ extension EditorController: UITextViewDelegate {
             journalText.isEditable = true
             self.isEditing = true
             playButton.isUserInteractionEnabled = true
-            textPlaceholder.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
+            textPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
             mediaPlaceholder.layer.borderWidth = 1.0
-            mediaPlaceholder.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
+            mediaPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
             
             if journalText.text == journalPlaceholderText {
                 journalText.text = editedJournalPlaceholderText
@@ -310,9 +310,10 @@ extension EditorController: UITextViewDelegate {
         journalText.contentInset = UIEdgeInsets(
             top: 0,
             left: 0,
-            bottom: keyboardRect.height - (journalText.font!.lineHeight * 2),
+            bottom: keyboardRect.height - (journalText.font?.lineHeight ?? 14 * 2),
             right: 0
         )
+        print("Keyboard naik")
         view.layoutIfNeeded()
     }
     
@@ -324,7 +325,7 @@ extension EditorController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if journalText.textColor == .lightGray {
             journalText.text = nil
-            journalText.textColor = UIColor(named: "blackDynamic")
+            journalText.textColor = UIColor.ColorLibrary.blackStatic
         }
         self.updateViewConstraints()
     }
@@ -346,14 +347,14 @@ extension UITextView {
     {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
-        
+
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-        
+
         let items = [flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()
-        
+
         self.inputAccessoryView = doneToolbar
     }
     

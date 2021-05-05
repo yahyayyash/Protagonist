@@ -22,8 +22,8 @@ class JournalEntriesController: UIViewController {
         let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.colors = [
-            UIColor(named: "whiteDynamic")?.cgColor as Any,
-            UIColor(named: "whiteDynamic")?.withAlphaComponent(0.0).cgColor as Any
+            UIColor.ColorLibrary.whiteDynamic.cgColor as Any,
+            UIColor.ColorLibrary.whiteDynamic.withAlphaComponent(0.0).cgColor as Any
         ]
         gradient.locations = [0.15, 1]
         return gradient
@@ -33,8 +33,8 @@ class JournalEntriesController: UIViewController {
         let gradient = CAGradientLayer()
         gradient.type = .axial
         gradient.colors = [
-            UIColor(named: "whiteDynamic")?.withAlphaComponent(0.0).cgColor as Any,
-            UIColor(named: "whiteDynamic")?.cgColor as Any
+            UIColor.ColorLibrary.whiteDynamic.withAlphaComponent(0.0).cgColor as Any,
+            UIColor.ColorLibrary.whiteDynamic.cgColor as Any
         ]
         gradient.locations = [0, 1]
         return gradient

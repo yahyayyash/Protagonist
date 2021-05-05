@@ -23,8 +23,7 @@ class JournalCellPlaceholder: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+
         let gradient: CAGradientLayer = {
             let gradient = CAGradientLayer()
             gradient.type = .axial
@@ -40,7 +39,7 @@ class JournalCellPlaceholder: UICollectionViewCell {
         gradientBottom.layer.addSublayer(gradient)
         
         self.layer.cornerRadius = 10
-        self.thumbnailPlaceholder.layer.borderColor = UIColor(named: "black")?.cgColor
+        self.thumbnailPlaceholder.layer.borderColor = UIColor.ColorLibrary.blackStatic.cgColor
         self.thumbnailPlaceholder.layer.borderWidth = 2.5
         self.thumbnailPlaceholder.layer.cornerRadius = 5
         self.thumbnailPlaceholder.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]

@@ -20,12 +20,12 @@ class RoundedCard: UIView {
     }
     
     private func setup() {
-        layer.borderColor = UIColor(named: "blackDynamic")!.withAlphaComponent(0.1).cgColor
+        layer.borderColor = UIColor.ColorLibrary.blackStatic.withAlphaComponent(0.1).cgColor
         layer.cornerRadius = 10
         layer.masksToBounds = false
         
         layer.borderWidth = 1.0
-        layer.shadowColor = UIColor(named: "blackDynamic")!.cgColor
+        layer.shadowColor = UIColor.ColorLibrary.blackStatic.cgColor
         layer.shadowRadius = 15.0
         layer.shadowOpacity = 0.05
         layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
@@ -34,7 +34,7 @@ class RoundedCard: UIView {
 }
 
 class GenericTextView: UITextView {
-    var lineHeight: CGFloat = 14.0
+    var lineHeight: CGFloat = 18.0
     
     override var font: UIFont? {
         didSet {
@@ -46,7 +46,7 @@ class GenericTextView: UITextView {
     
     override func draw(_ rect: CGRect) {
         let ctx = UIGraphicsGetCurrentContext()
-        ctx?.setStrokeColor(UIColor(named: "blackDynamic")!.withAlphaComponent(0.1).cgColor)
+        ctx?.setStrokeColor(UIColor.ColorLibrary.blackStatic.withAlphaComponent(0.1).cgColor)
         let numberOfLines = Int(rect.height / lineHeight)
         let topInset = textContainerInset.top
         

@@ -37,8 +37,11 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male-full" translatesAutoresizingMaskIntoConstraints="NO" id="Wym-tX-hfP">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wym-tX-hfP">
                                 <rect key="frame" x="0.0" y="165" width="414" height="731"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="731" id="acm-In-diH"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-Ds-Fvh">
                                 <rect key="frame" x="30" y="128" width="354" height="29.5"/>
@@ -742,7 +745,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="nTo-Hm-KKT"/>
+        <segue reference="QQ9-WY-eke"/>
         <segue reference="NeZ-P2-2sZ"/>
         <segue reference="shi-Yw-cay"/>
     </inferredMetricsTieBreakers>
@@ -756,7 +759,6 @@
         <image name="icon-plus" width="60" height="60"/>
         <image name="male" width="311" height="812"/>
         <image name="male-avatar" width="221" height="250"/>
-        <image name="male-full" width="375" height="731"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="play.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="blackDynamic">

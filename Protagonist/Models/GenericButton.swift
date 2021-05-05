@@ -15,9 +15,9 @@ class GenericButton: UIButton {
     }
     
     private func setup(){
-        self.setTitleColor(UIColor(named: "AccentColor")!, for: .normal)
-        self.setTitleColor(UIColor(named: "AccentColor")!.withAlphaComponent(0.5), for: .highlighted)
-        self.setTitleColor(UIColor(named: "AccentColor")!.withAlphaComponent(0.5), for: .disabled)
+        self.setTitleColor(UIColor.ColorLibrary.accentColor, for: .normal)
+        self.setTitleColor(UIColor.ColorLibrary.accentColor.withAlphaComponent(0.5), for: .highlighted)
+        self.setTitleColor(UIColor.ColorLibrary.accentColor.withAlphaComponent(0.5), for: .disabled)
     }
     
 }
