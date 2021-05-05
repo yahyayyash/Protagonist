@@ -49,7 +49,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func unwindToA(_ segue:UIStoryboardSegue){
-        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateCellsLayout()
     }
     
     func fetchJournal(){
@@ -61,7 +65,6 @@ class ViewController: UIViewController {
             }
         }
         catch {
-            
         }
     }
     
@@ -70,6 +73,7 @@ class ViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.fetchJournal()
         self.checkJournalList()
+        cellLayoutRefresh()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,16 +110,42 @@ class ViewController: UIViewController {
             buttonLabel.textColor = .white
         }
     }
-
 }
+
+// MARK: - UICollectionViewDelegate & DataSource
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cellLayoutRefresh()
         performSegue(withIdentifier: "journalSegue", sender: self)
     }
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func cellLayoutRefresh(){
+        // An improper way to fix cells not updating after selecting the cell or back from other page
+        DispatchQueue.main.async {
+            self.journalCollection.setContentOffset(CGPoint(x: self.journalCollection.contentOffset.x - 1, y: 0), animated: true)
+        }
+    }
+    
+    func updateCellsLayout(){
+        let centerX = journalCollection.contentOffset.x + (journalCollection.frame.size.width)/2
+        
+        for cell in journalCollection.visibleCells {
+            var offsetX = centerX - cell.center.x
+            if offsetX < 0 {
+                offsetX *= -1
+            }
+            cell.transform = CGAffineTransform.identity
+            let offsetPercentage = offsetX / (view.bounds.width * 2.7)
+            let scaleX = 1 - (offsetPercentage / 2)
+            cell.transform = CGAffineTransform(scaleX: scaleX, y: scaleX)
+            cell.alpha = 1 - (offsetPercentage * 2)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (journalList?.count ?? 0) > 0 {
             return journalList!.count
@@ -153,8 +183,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
                 cell.bookmarkIcon.isHidden = true
             }
             
-            cell.cellNumber.text = "0\(indexPath.row + 1)"
-            cell.journalName.text = currentJournal?.title
+            (journalList?.count ?? 0 < 10) ? (cell.cellNumber.text = "0\(indexPath.row + 1)") :  (cell.cellNumber.text = "\(indexPath.row + 1)")
+            
+            cell.journalName.text = "#" + (currentJournal?.title)!
             cell.journalDescription.text = currentJournal?.subtitle
             return cell
         }
@@ -165,9 +196,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: journalCollection.frame.width - 80, height: journalCollection.frame.height)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateCellsLayout()
+    }
 }
 
 // MARK: - UICollectionViewFlowLayout
+
 class CollectionViewFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint
     {

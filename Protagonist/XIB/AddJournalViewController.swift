@@ -107,7 +107,7 @@ class AddJournalViewController: UIViewController {
         switch sourceView {
         case "createEntry":
             let newJournal = JournalData(context: self.context)
-            newJournal.title = "#\(journalName.text ?? "Untitled")"
+            newJournal.title = journalName.text ?? "Untitled"
             newJournal.subtitle = journalDescription.text ?? "Your description here"
             do {
                 try self.context.save()
@@ -127,7 +127,7 @@ class AddJournalViewController: UIViewController {
             })
             break
         case "editEntry":
-            sourceJournal?.title = "#\(journalName.text ?? "Untitled")"
+            sourceJournal?.title = journalName.text ?? "Untitled"
             sourceJournal?.subtitle = journalDescription.text ?? "Your description here"
             do {
                 try self.context.save()

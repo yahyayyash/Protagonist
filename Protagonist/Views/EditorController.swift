@@ -171,7 +171,7 @@ class EditorController: UIViewController {
     }
     
     func selectedIsExist(){
-        self.title = selected?.journals?.title
+        self.title = "#" + (selected?.journals?.title)!
         self.journalSubtitle.text = selected?.journals?.subtitle
         
         if selected?.video != nil {

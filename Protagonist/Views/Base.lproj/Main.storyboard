@@ -29,7 +29,7 @@
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UGK-pH-k2h">
                                 <rect key="frame" x="0.0" y="241.5" width="414" height="485.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="tzN-5n-0gd" customClass="CollectionViewFlowLayout" customModule="Protagonist" customModuleProvider="target">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="tzN-5n-0gd" customClass="CollectionViewFlowLayout" customModule="Protagonist" customModuleProvider="target">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -425,6 +425,11 @@
                                 <rect key="frame" x="0.0" y="123" width="414" height="773"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" id="eet-Yg-yNt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeF-V5-whm" customClass="CustomLabel" customModule="Protagonist" customModuleProvider="target">
                                 <rect key="frame" x="193" y="83" width="28" height="15"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -537,6 +542,7 @@
                         <outlet property="buttonLabel" destination="yga-Hh-Dh3" id="jpF-sJ-5hk"/>
                         <outlet property="journalSubtitle" destination="yeF-V5-whm" id="v3M-C7-24G"/>
                         <outlet property="journalTable" destination="Z6G-KN-h8n" id="d53-mX-8ps"/>
+                        <outlet property="topGradient" destination="eet-Yg-yNt" id="gdD-yr-4jd"/>
                         <segue destination="Tlt-B2-FAr" kind="show" identifier="entrySegue" id="nTo-Hm-KKT"/>
                         <segue destination="Tlt-B2-FAr" kind="show" identifier="editEntrySegue" id="QQ9-WY-eke"/>
                         <segue destination="l2w-Kw-7HU" kind="unwind" identifier="unwindToB" unwindAction="unwindToB:" id="PzL-bd-ZjQ"/>

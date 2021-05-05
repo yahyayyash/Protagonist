@@ -18,10 +18,15 @@ class JournalEntriesController: UIViewController {
     var selectedContext: IndexPath?
     var bookmarkMenu: UIBarButtonItem?
     
-    var gradientTop : CAGradientLayer?
-    let gradientView : UIView = {
-        let view = UIView()
-        return view
+    let gradientTop: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            UIColor(named: "whiteDynamic")?.cgColor as Any,
+            UIColor(named: "whiteDynamic")?.withAlphaComponent(0.0).cgColor as Any
+        ]
+        gradient.locations = [0.15, 1]
+        return gradient
     }()
     
     let gradientBottom: CAGradientLayer = {
@@ -40,6 +45,7 @@ class JournalEntriesController: UIViewController {
     @IBOutlet weak var buttonLabel: CustomLabel!
     @IBOutlet weak var journalSubtitle: CustomLabel!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var topGradient: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +55,6 @@ class JournalEntriesController: UIViewController {
         self.journalTable.tableFooterView = footerView
         
         setupClearNavbar()
-        setupGradient()
         interfaceUpdate()
         
         journalTable.rowHeight = UITableView.automaticDimension
@@ -130,7 +135,7 @@ class JournalEntriesController: UIViewController {
     
     func interfaceUpdate() {
         
-        self.title = selected?.title
+        self.title = "#" + (selected?.title)!
         self.journalSubtitle.text = selected?.subtitle
         
         let customImage = UIImage(systemName: "arrow.backward")
@@ -157,8 +162,12 @@ class JournalEntriesController: UIViewController {
         UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.font: fontBig]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: fontSmall]
         
+        
+        
         gradientBottom.frame = bottomGradient.bounds
         bottomGradient.layer.addSublayer(gradientBottom)
+        gradientTop.frame = topGradient.bounds
+        topGradient.layer.addSublayer(gradientTop)
         
         buttonLabel.backgroundColor = .systemYellow
         buttonLabel.layer.cornerRadius = 10
@@ -204,19 +213,6 @@ class JournalEntriesController: UIViewController {
         ])
         
         return addMenuItems
-    }
-    
-    func setupGradient() {
-        let height : CGFloat = 125 // Height of the nav bar
-        let color = (UIColor(named: "whiteDynamic") ?? UIColor.white).withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
-        let clear = (UIColor(named: "whiteDynamic") ?? UIColor.white).withAlphaComponent(0.0).cgColor
-        gradientTop = setupGradient(height: height, topColor: color,bottomColor: clear)
-        view.addSubview(gradientView)
-        NSLayoutConstraint.activate([
-            gradientView.topAnchor.constraint(equalTo: view.topAnchor),
-            gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        ])
-        gradientView.layer.insertSublayer(gradientTop!, at: 0)
     }
     
     @objc func bookmarkJournal() {
