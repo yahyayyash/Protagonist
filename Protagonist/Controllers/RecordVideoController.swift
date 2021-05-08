@@ -61,9 +61,7 @@ extension EditorController: UIImagePickerControllerDelegate {
         switch sourceHandler {
         case "Camera":
             UISaveVideoAtPathToSavedPhotosAlbum(url.path, self, #selector(video(_:didFinishSavingWithError:contextInfo:)), nil)
-            print("Camera, saved to library.")
         case "Album":
-            print("Album, nothing to be saved.")
             break
         case .none:
             break

@@ -111,6 +111,9 @@ class JournalEntriesController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? EditorController
+        destination?.selectedGroup = selected!
+        destination?.journalEntriesController = self
+        
         switch segue.identifier {
         case "entrySegue":
             destination?.selected = fetchController.object(at: journalTable.indexPathForSelectedRow!)
@@ -121,7 +124,6 @@ class JournalEntriesController: UIViewController {
             break
         case "newEntrySegue":
             destination?.selected = nil
-            destination?.selectedGroup = selected!
             break
         case .none:
             break

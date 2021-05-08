@@ -9,7 +9,9 @@ import UIKit
 import AVKit
 import MobileCoreServices
 
-class EditorController: UIViewController {
+class EditorController: UIViewController, UIAdaptivePresentationControllerDelegate {
+    
+    var journalEntriesController: JournalEntriesController?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var selected: JournalEntry?
@@ -19,12 +21,7 @@ class EditorController: UIViewController {
     var editEntryHandler: String?
     var sourceHandler: String?
     var isEditRightAway: Bool?
-    
-    var gradient : CAGradientLayer?
-    let gradientView : UIView = {
-        let view = UIView()
-        return view
-    }()
+    var alertMenu: UIAlertController?
     
     @IBOutlet weak var videoThumbnail: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -33,22 +30,73 @@ class EditorController: UIViewController {
     @IBOutlet weak var mediaPlaceholder: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var textPlaceholder: RoundedCard!
-    @IBOutlet weak var journalSubtitle: CustomLabel!
-    
-    let journalPlaceholderText: String = "Write down your thought here ... \nTap pencil icon to enable editing."
-    
-    let editedJournalPlaceholderText: String = "Tap here to start writing ..."
+    @IBOutlet weak var pageTitle: UILabel!
+    @IBOutlet weak var pageSubtitle: CustomLabel!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var topNavView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        journalText.addDoneButtonOnKeyboard()
+        
+        menuButton.showsMenuAsPrimaryAction = true
+        menuButton.adjustsImageWhenHighlighted = false
+        menuButton.menu = menuItems()
         
         videoUrlHandler = selected?.video
-        updateUI()
+        
         if (isEditRightAway ?? false) {
             editJournal()
         }
+        
         journalText.delegate = self
+        presentationController?.delegate = self
+        
+        journalText.addDoneButtonOnKeyboard()
+        updateUI()
+    }
+    
+    func menuItems() -> UIMenu {
+        
+        let saveAction = UIAction(title: "Save", image: UIImage(systemName: "square.and.arrow.down")) { _ in
+            self.editEntryHandler = "Save"
+            self.checkAlertHandler()
+        }
+        
+        let discardAction = UIAction(title: "Discard", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        let changeAction = UIAction(title: "Change Video", image: UIImage(systemName: "video")) { _ in
+            self.mediaHandlerAlert()
+        }
+        
+        let deleteAction = UIAction(title: "Delete Entry", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+            self.context.delete(self.selected!)
+            do {
+                try self.context.save()
+            }
+            catch {
+                
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        let deleteMenu = UIMenu(
+            title: "Delete Entry",
+            image: UIImage(systemName: "trash"), options: .destructive, children: [deleteAction])
+        
+        if selected?.video != nil || selected != nil {
+            let addMenuItems = UIMenu(image: nil, options: .displayInline, children: [saveAction, changeAction, deleteMenu])
+            return addMenuItems
+        }
+        
+        let addMenuItems = UIMenu(image: nil, options: .displayInline, children: [saveAction, changeAction, discardAction])
+        return addMenuItems
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        journalEntriesController?.loadEntries()
+        journalEntriesController?.journalTable.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,18 +109,28 @@ class EditorController: UIViewController {
             object: nil
         )
         
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(EditorController.handleKeybolardWillHide),
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        if (journalText.text == "" || journalText.text == selected?.textDescription) &&
+            (videoUrlHandler == nil || videoUrlHandler == selected?.video) {
+            return true
+        }
+        return false
+    }
+    
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        self.saveEntryAlert()
+    }
+    
+    // Alert - Select Source
     @IBAction func selectSource(_ sender: Any) {
         
         if videoUrlHandler != nil {
@@ -91,57 +149,31 @@ class EditorController: UIViewController {
             })
         }
         if selected?.video == nil {
-            let alert = UIAlertController(
-                title: "Add Video",
-                message: "Select media source.",
-                preferredStyle: .alert)
-            alert.addAction(UIAlertAction(
-                                title: "Camera",
-                                style: UIAlertAction.Style.default,
-                                handler: { action in
-                                    self.sourceHandler = "Camera"
-                                    VideoHelper.startMediaBrowser(delegate: self, sourceType: .camera)
-                                }))
-            alert.addAction(UIAlertAction(
-                                title:"Album",
-                                style: UIAlertAction.Style.default,
-                                handler: { action in
-                                    self.sourceHandler = "Album"
-                                    VideoHelper.startMediaBrowser(delegate: self, sourceType: .savedPhotosAlbum)
-                                }))
-            alert.addAction(UIAlertAction(
-                                title:"Cancel",
-                                style: UIAlertAction.Style.cancel,
-                                handler: nil))
-            present(alert, animated: true, completion: nil)
+            mediaHandlerAlert()
         } else {
             
         }
     }
     
+    // Update UI function
     func updateUI(){
+        
+        pageTitle.text = "#" + (selectedGroup?.title)!
+        pageSubtitle.text = (selectedGroup?.subtitle)!
         
         selected == nil ? selectedIsNil() : selectedIsExist()
         
-        setupClearNavbar()
-        setupGradient()
-        journalSubtitle.layer.cornerRadius = 10
-        journalSubtitle.layer.masksToBounds = true
-        
         if journalText.text.isEmpty {
-            journalText.text = journalPlaceholderText
             journalText.textColor = .lightGray
-        }
-        
-        if !journalText.isEditable {
-            navigationItem.rightBarButtonItem = nil
-            navigationItem.hidesBackButton = false
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil"), style: .plain, target: self, action: #selector(editJournal))
         }
         
         dateLabel.text = customDateFormatter(dateInput: selected?.date ?? Date())[0]
         monthLabel.text = customDateFormatter(dateInput: selected?.date ?? Date())[1]
         
+        topNavView.layer.borderWidth = 1
+        topNavView.layer.borderColor = UIColor.ColorLibrary.blackDynamic.withAlphaComponent(0.05).cgColor
+        pageSubtitle.layer.masksToBounds = true
+        pageSubtitle.layer.cornerRadius = 10
         mediaPlaceholder.clipsToBounds = true
         mediaPlaceholder.layer.cornerRadius = 10
         mediaPlaceholder.layer.borderWidth = 0.0
@@ -149,36 +181,17 @@ class EditorController: UIViewController {
         
     }
     
-    func setupGradient() {
-        let height : CGFloat = 125 // Height of the nav bar
-        let color = UIColor.ColorLibrary.whiteDynamic.withAlphaComponent(1.0).cgColor // You can mess with opacity to your liking
-        let clear = UIColor.ColorLibrary.whiteDynamic.withAlphaComponent(0.0).cgColor
-        gradient = setupGradient(height: height, topColor: color,bottomColor: clear)
-        view.addSubview(gradientView)
-        NSLayoutConstraint.activate([
-            gradientView.topAnchor.constraint(equalTo: view.topAnchor),
-            gradientView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        ])
-        gradientView.layer.insertSublayer(gradient!, at: 0)
-    }
-    
     func selectedIsNil(){
-        self.title = "New Entry"
-        self.journalSubtitle.text = selectedGroup?.subtitle
-        
-        playButton.isUserInteractionEnabled = false
+        playButton.isUserInteractionEnabled = true
         playButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
     }
     
     func selectedIsExist(){
-        self.title = "#" + (selected?.journals?.title)!
-        self.journalSubtitle.text = selected?.journals?.subtitle
         
         if selected?.video != nil {
             self.playButton.isUserInteractionEnabled = true
             self.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
         } else {
-            self.playButton.isUserInteractionEnabled = false
             self.playButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
         }
         
@@ -186,6 +199,31 @@ class EditorController: UIViewController {
             videoThumbnail.image = UIImage(data: (selected?.thumbnail)!)
         }
         journalText.text = selected?.textDescription
+    }
+    func mediaHandlerAlert(){
+        let alert = UIAlertController(
+            title: "Add Video",
+            message: "Select media source.",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(
+                            title: "Camera",
+                            style: UIAlertAction.Style.default,
+                            handler: { action in
+                                self.sourceHandler = "Camera"
+                                VideoHelper.startMediaBrowser(delegate: self, sourceType: .camera)
+                            }))
+        alert.addAction(UIAlertAction(
+                            title:"Album",
+                            style: UIAlertAction.Style.default,
+                            handler: { action in
+                                self.sourceHandler = "Album"
+                                VideoHelper.startMediaBrowser(delegate: self, sourceType: .savedPhotosAlbum)
+                            }))
+        alert.addAction(UIAlertAction(
+                            title:"Cancel",
+                            style: UIAlertAction.Style.cancel,
+                            handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func saveEntryAlert(){
@@ -273,7 +311,7 @@ class EditorController: UIViewController {
             videoThumbnail.image = UIImage(named: "")
         }
         journalText.isEditable = false
-        textPlaceholder.layer.borderColor = UIColor.ColorLibrary.blackStatic.withAlphaComponent(0.05).cgColor
+        textPlaceholder.layer.borderColor = UIColor.ColorLibrary.blackDynamic.withAlphaComponent(0.05).cgColor
         self.isEditing = false
         updateUI()
     }
@@ -292,10 +330,6 @@ extension EditorController: UITextViewDelegate {
             mediaPlaceholder.layer.borderWidth = 1.0
             mediaPlaceholder.layer.borderColor = UIColor.systemYellow.cgColor
             
-            if journalText.text == journalPlaceholderText {
-                journalText.text = editedJournalPlaceholderText
-            }
-            
             navigationItem.rightBarButtonItem = nil
             navigationItem.hidesBackButton = true
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(editJournal))
@@ -310,10 +344,9 @@ extension EditorController: UITextViewDelegate {
         journalText.contentInset = UIEdgeInsets(
             top: 0,
             left: 0,
-            bottom: keyboardRect.height - (journalText.font?.lineHeight ?? 14 * 2),
+            bottom: keyboardRect.height - (journalText.font!.lineHeight * 3),
             right: 0
         )
-        print("Keyboard naik")
         view.layoutIfNeeded()
     }
     
@@ -325,7 +358,7 @@ extension EditorController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if journalText.textColor == .lightGray {
             journalText.text = nil
-            journalText.textColor = UIColor.ColorLibrary.blackStatic
+            journalText.textColor = UIColor.ColorLibrary.blackDynamic
         }
         self.updateViewConstraints()
     }
@@ -347,14 +380,14 @@ extension UITextView {
     {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
-
+        
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-
+        
         let items = [flexSpace, done]
         doneToolbar.items = items
         doneToolbar.sizeToFit()
-
+        
         self.inputAccessoryView = doneToolbar
     }
     
